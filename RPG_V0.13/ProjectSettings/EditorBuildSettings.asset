@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/startScreen.unity
+    guid: 7d24b5fa96c86a14e82a1f1561ad3a3c
+  - enabled: 1
+    path: Assets/Scenes/battleScreen.unity
+    guid: 5386ac2ffe05e294c84652798989574e
+  - enabled: 1
+    path: Assets/Scenes/victoryScreen.unity
+    guid: 6d3ee8d04dbbf83488acda550893ccdd
+  - enabled: 1
+    path: Assets/Scenes/defeatScreen.unity
+    guid: 4471c72bf0757984f956e21e8d2acf56
+  m_configObjects: {}
