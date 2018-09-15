@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{E9820689-A408-9D45-2BB0-E5566CF5AA8E}</ProjectGuid>
+    <ProjectGuid>{0450C207-FCB1-6AC7-EA55-E7EEA472B0EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -72,6 +72,7 @@
     <Compile Include="Assets\scripts\battleMenu\selectAttack.cs" />
     <Compile Include="Assets\scripts\battleMenu\setAnimation.cs" />
     <Compile Include="Assets\scripts\battleMenu\setAttack01Text.cs" />
+    <Compile Include="Assets\scripts\characterScripts\BattleManager.cs" />
     <Compile Include="Assets\scripts\characterScripts\CharFlow.cs" />
     <Compile Include="Assets\scripts\characterScripts\charHooded.cs" />
     <Compile Include="Assets\scripts\characterScripts\charMysterio.cs" />
@@ -96,21 +97,22 @@
     <Compile Include="Assets\scripts\mainMenu\loadSceneOnClicked.cs" />
     <Compile Include="Assets\scripts\mainMenu\quitOnClick.cs" />
     <Compile Include="Assets\scripts\mainMenu\selectOnInput.cs" />
+    <Compile Include="Assets\scripts\PartyMenuScript.cs" />
     <Compile Include="Assets\scripts\SetPortrait.cs" />
     <Compile Include="Assets\scripts\ToolTipEnabler.cs" />
     <Compile Include="Assets\scripts\ToolTipText.cs" />
     <None Include="Assets\GGEZ\PerfectPixelCamera\README.txt" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/Chris Justo/Desktop/RPG_V0.12/RPG_V0.2/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/chris/Documents/GitHub/SpectrumGenesis/RPG_V0.13/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/Chris Justo/Desktop/RPG_V0.12/RPG_V0.2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/chris/Documents/GitHub/SpectrumGenesis/RPG_V0.13/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/Chris Justo/Desktop/RPG_V0.12/RPG_V0.2/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/chris/Documents/GitHub/SpectrumGenesis/RPG_V0.13/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/Chris Justo/Desktop/RPG_V0.12/RPG_V0.2/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/chris/Documents/GitHub/SpectrumGenesis/RPG_V0.13/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -308,10 +310,10 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:/Users/Chris Justo/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+      <HintPath>C:/Users/chris/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>C:/Users/Chris Justo/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/chris/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

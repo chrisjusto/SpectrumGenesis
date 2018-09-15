@@ -1,0 +1,305 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1117423991432238}
+  m_IsPrefabAsset: 1
+--- !u!1 &1117423991432238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4619671020351954}
+  - component: {fileID: 114261294417788400}
+  - component: {fileID: 114852580788433534}
+  - component: {fileID: 114146832344938232}
+  - component: {fileID: 114279795083648580}
+  - component: {fileID: 114801222344579960}
+  m_Layer: 0
+  m_Name: partyData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4619671020351954
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1117423991432238}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 902.5842, y: 629.56995, z: -7.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114146832344938232
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1117423991432238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6620406986befec4cbbdaf34a7a67661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponName:
+  - 
+  - sword of princes
+  - royal greatsword
+  - Archmages Bow
+  - Tome of Waves
+  - throwing Knives
+  - Striking Tome
+  - Staff of Angels
+  - Poison Tipped Knife
+  WeaponDesc:
+  - 
+  - Atk 60/100 matches type of user
+  - Atk Normal 60/100
+  - sAtk Archane 40/100
+  - sAtk Water 60/100
+  - Atk Normal 40/100 Increased Crit Chance
+  - sAtk Electric 60/100 5% chance to paralyze
+  - sAtk Light 120/100 takes 1 turn to charge
+  - atk nature 30/100 5% chance to poison
+--- !u!114 &114261294417788400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1117423991432238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e785bd9e1a67640a3d1df88f1d88d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Party: {fileID: 0}
+  ActiveChar: {fileID: 0}
+  partyMember01: {fileID: 0}
+  partyMember02: {fileID: 0}
+  partyMember03: {fileID: 0}
+  partyMember04: {fileID: 0}
+  part01: 0
+--- !u!114 &114279795083648580
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1117423991432238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9301ed8d9e36b56429a56685e8581586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EquipName:
+  - 
+  - princes garb
+  - golden armour
+  - trinket of defense
+  - boots of swiftness
+  - trinket of fortitude
+  - Holy Trinket
+  - cloak of darkness
+  EquipDesc:
+  - 
+  - raises defense and speed
+  - raises defense greatly
+  - raises defense and special def
+  - raises speed greatlly
+  - raises special defense greatly
+  - raises special atack and special defense
+  - lowers defense raises evasion
+--- !u!114 &114801222344579960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1117423991432238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a609af86b007c874eb414229fa6d8813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityName:
+  - 
+  - Adaptability
+  - Unbending Will
+  - SteadyHand
+  - Lightning Rod
+  - Condesend
+  - Archane Barrier
+  - Cleanse
+  - Nimble Toes
+  AbilityDesc:
+  - 
+  - after using an atk raise atk and reduces satk
+  - survive a move would reduce hp to 0 from full hp
+  - if opponent has a status effect deal extra damage
+  - electric attacks reduced to 0 and raise speed greatly
+  - lowers attack of enemy
+  - fire water nature and air damage reduced
+  - switching out clears status effect
+  - lowers defense raises evasion
+--- !u!114 &114852580788433534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1117423991432238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d81b961a9c3038418e585a2437243e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackName:
+  - 
+  - OriginSlash
+  - Sharpen
+  - Psychic Blade
+  - Scortch
+  - Block
+  - Stone Armour
+  - Earth Bash
+  - Taunt
+  - psychic shot
+  - poison arrow
+  - Bear Trap
+  - Elvish Song
+  - thunder storm
+  - meditate
+  - gust
+  - grave Blast
+  - swift strike
+  - scoff
+  - only punch
+  - hone mind
+  - psychic torment
+  - Phycic shock
+  - beam cannon
+  - hone mind
+  - ice shard
+  - healing light
+  - holy fire
+  - blessing
+  - triple strike
+  - darkness
+  - paralyze powder
+  - cheep shot
+  AttackType:
+  - 
+  - archane
+  - Normal
+  - psychic
+  - fire
+  - normal
+  - Earth
+  - Earth
+  - Dark
+  - psychic
+  - Nature
+  - normal
+  - light
+  - electric
+  - psychic
+  - air
+  - dark
+  - air
+  - normal
+  - normal
+  - psychic
+  - psychic
+  - psychic
+  - archane
+  - psychic
+  - ice
+  - light
+  - fire
+  - light
+  - normal
+  - dark
+  - nature
+  - dark
+  AttackPowerAcc:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  AttackUses: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  AttackDesc:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  AttackPriority: 000000000000000000000000000000000000000000000000000000000000000000
+  AttackSuperPriority: 000000000000000000000000000000000000000000000000000000000000000000
