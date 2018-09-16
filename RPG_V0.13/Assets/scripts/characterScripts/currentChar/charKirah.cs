@@ -26,6 +26,7 @@ public class charKirah : charClass {
         SPD = 800;
 
         maxHealth = HP * 2;
+        currentHealth = HP * 2;
 
         frontSprite = "char/charFront/05_kirah";
         backSprite = "char/charBack/05_kirah";

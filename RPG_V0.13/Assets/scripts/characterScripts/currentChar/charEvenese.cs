@@ -26,6 +26,7 @@ public class charEvenese : charClass {
         SPD = 350;
 
         maxHealth = HP * 2;
+        currentHealth = HP * 2;
 
         frontSprite = "char/charFront/07_evenese";
         backSprite = "char/charBack/07_evenese";

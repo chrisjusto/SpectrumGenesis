@@ -28,6 +28,7 @@ public class charLia : charClass {
         SPD = 600;
 
         maxHealth = HP * 2;
+        currentHealth = HP * 2;
 
         frontSprite = "char/charFront/03_lia";
         backSprite = "char/charBack/03_lia";

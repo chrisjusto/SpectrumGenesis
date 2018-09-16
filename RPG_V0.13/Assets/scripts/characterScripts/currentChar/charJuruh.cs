@@ -27,6 +27,7 @@ public class charJuruh : charClass {
         SPD = 600;
 
         maxHealth = HP * 2;
+        currentHealth = HP * 2;
 
         frontSprite = "char/charFront/04_juruh";
         backSprite = "char/charBack/04_juruh";

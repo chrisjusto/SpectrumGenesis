@@ -31,6 +31,7 @@ public class charAbel : charClass
         SPD = 750;
 
         maxHealth = HP * 2;
+        currentHealth = HP * 2;
 
         frontSprite = "char/charFront/01_abelFire";
         backSprite = "char/charBack/01_abelFire";

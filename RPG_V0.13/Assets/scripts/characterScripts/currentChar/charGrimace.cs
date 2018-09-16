@@ -27,6 +27,7 @@ public class charGrimace : charClass {
         SPD = 300;
 
         maxHealth = HP * 2;
+        currentHealth = HP * 2;
 
         frontSprite = "char/charFront/06_grimace";
         backSprite = "char/charBack/06_grimace";

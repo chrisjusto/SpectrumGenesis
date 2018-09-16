@@ -30,6 +30,7 @@ public class charDiana : charClass {
         SPD = 300;
 
         maxHealth = HP * 2;
+        currentHealth = HP * 2;
 
         frontSprite = "char/charFront/02_diana";
         backSprite = "char/charBack/02_diana";

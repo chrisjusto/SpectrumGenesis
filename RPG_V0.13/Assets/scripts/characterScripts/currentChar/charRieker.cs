@@ -30,6 +30,7 @@ public class charRieker : charClass {
         SPD = 600;
 
         maxHealth = HP * 2;
+        currentHealth = HP * 2;
 
         frontSprite = "char/charFront/08_rieker";
         backSprite = "char/charBack/08_rieker";

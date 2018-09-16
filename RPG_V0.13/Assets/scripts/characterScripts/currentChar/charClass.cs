@@ -40,6 +40,9 @@ public class charClass : MonoBehaviour {
     public float sDEF;
     public float SPD;
 
+    public int xp;
+    public int xpToNextLvl;
+
     public float currentHealth;
     public float maxHealth;
 
