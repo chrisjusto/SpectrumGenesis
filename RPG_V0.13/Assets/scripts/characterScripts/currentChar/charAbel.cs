@@ -13,12 +13,12 @@ public class charAbel : charClass
 
         LVL = 100;
 
-        PrimaryType = 1;
+        PrimaryType = 2;
         SecondaryType = 0;
 
-        typeWeekness[0] = 3;
-        typeWeekness[1] = 6;
-        typeWeekness[2] = 8;
+        typeWeekness[0] = 2;
+        typeWeekness[1] = 5;
+        typeWeekness[2] = 6;
 
         typeStrength[0] = 4;
         typeStrength[1] = 7;
@@ -48,7 +48,18 @@ public class charAbel : charClass
         Attack03 = 3;
         Attack04 = 4;
 
+        EquipedAttacks[0] = 1;
+        EquipedAttacks[1] = 2;
+        EquipedAttacks[2] = 3;
+        EquipedAttacks[3] = 4;
 
+        attackUses[0] = AttackDatabase.attacks.AttackUses[EquipedAttacks[0]];
+        attackUses[1] = AttackDatabase.attacks.AttackUses[EquipedAttacks[1]];
+        attackUses[2] = AttackDatabase.attacks.AttackUses[EquipedAttacks[2]];
+        attackUses[3] = AttackDatabase.attacks.AttackUses[EquipedAttacks[3]];
+
+
+        
 
 
 

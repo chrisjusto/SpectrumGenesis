@@ -97,6 +97,8 @@
     <Compile Include="Assets\scripts\mainMenu\loadSceneOnClicked.cs" />
     <Compile Include="Assets\scripts\mainMenu\quitOnClick.cs" />
     <Compile Include="Assets\scripts\mainMenu\selectOnInput.cs" />
+    <Compile Include="Assets\scripts\newBattleFolder\SetBattleToolTip.cs" />
+    <Compile Include="Assets\scripts\newBattleFolder\ShowBattleToolTip.cs" />
     <Compile Include="Assets\scripts\PartyMenuScript.cs" />
     <Compile Include="Assets\scripts\SetPortrait.cs" />
     <Compile Include="Assets\scripts\SetUI.cs" />

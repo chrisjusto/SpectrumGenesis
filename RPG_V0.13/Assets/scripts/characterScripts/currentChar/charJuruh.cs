@@ -43,6 +43,11 @@ public class charJuruh : charClass {
         Attack02 = 14;
         Attack03 = 15;
         Attack04 = 16;
+
+        attackUses[0] = AttackDatabase.attacks.AttackUses[EquipedAttacks[0]];
+        attackUses[1] = AttackDatabase.attacks.AttackUses[EquipedAttacks[1]];
+        attackUses[2] = AttackDatabase.attacks.AttackUses[EquipedAttacks[2]];
+        attackUses[3] = AttackDatabase.attacks.AttackUses[EquipedAttacks[3]];
     }
 	
 

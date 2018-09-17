@@ -9,6 +9,7 @@ public class AttackDatabase : MonoBehaviour {
 
     public string[] AttackName = new string[33] { "", "OriginSlash", "Sharpen", "Psychic Blade", "Scortch", "Block", "Stone Armour", "Earth Bash", "Taunt", "psychic shot", "poison arrow", "Bear Trap", "Elvish Song", "thunder storm", "meditate","gust","grave Blast","swift strike","scoff","only punch","hone mind","psychic torment","Phycic shock","beam cannon","hone mind","ice shard","healing light","holy fire","blessing","triple strike","darkness","paralyze powder","cheep shot" };
     public string[] AttackType = new string[33] {"","archane","Normal","psychic","fire","normal","Earth","Earth","Dark","psychic","Nature","normal","light","electric","psychic","air","dark","air","normal","normal","psychic","psychic","psychic","archane","psychic","ice","light","fire","light","normal","dark","nature","dark" };
+    public int[] AttackTypeValue = new int[33];
     public string[] AttackPowerAcc = new string[33];
     public int[] AttackUses = new int[33];
     public string[] AttackDesc = new string[33];
@@ -26,30 +27,34 @@ public class AttackDatabase : MonoBehaviour {
         {
 
         }
-
+        // 0 = none 1 =normal 2=fire 3=water 4=nature 5=earth 6=air 7=ice 8=electric 9=light 10=dark 11=psychic 12=archane 13=celestial
         AttackName[1] = "origin slash";
         AttackType[1] = "Archane";
         AttackPowerAcc[1] = "60/100";
         AttackUses[1] = 15;
         AttackDesc[1] = "a swift slash drawing from ancient archane power";
+        AttackTypeValue[1] = 12;
 
         AttackName[2] = "sharpen";
         AttackType[2] = "normal";
         AttackPowerAcc[2] = "x/100";
         AttackUses[2] = 20;
         AttackDesc[2] = "raises users attack";
+        AttackTypeValue[2] = 1;
 
         AttackName[3] = "Psychic blade";
         AttackType[3] = "psychic";
         AttackPowerAcc[3] = "40/100";
         AttackUses[3] = 20;
         AttackDesc[3] = "psychic energy with the percision to slice hairs";
+        AttackTypeValue[3] = 11;
 
         AttackName[4] = "Scortch";
         AttackType[4] = "fire";
         AttackPowerAcc[4] = "x/85";
         AttackUses[4] = 10;
         AttackDesc[4] = "inflicts target with burn";
+        AttackTypeValue[4] = 2;
 
         AttackName[5] = "block";
         AttackType[5] = "Normal";
@@ -57,24 +62,28 @@ public class AttackDatabase : MonoBehaviour {
         AttackUses[5] = 5;
         AttackDesc[5] = "always takes priority, blocks an attack, repeat uses may fail";
         AttackPriority[5] = true;
+        AttackTypeValue[5] = 1;
 
         AttackName[6] = "stone armor";
         AttackType[6] = "earth";
         AttackPowerAcc[6] = "x/100";
         AttackUses[6] = 15;
         AttackDesc[6] = "coats the user in an aura with the strength of stone greatly raising there defense";
+        AttackTypeValue[6] = 5;
 
         AttackName[7] = "earth bash";
         AttackType[7] = "earth";
         AttackPowerAcc[7] = "60/100";
         AttackUses[7] = 15;
         AttackDesc[7] = "with the weight of the strongest boulder the user smashes into the target";
+        AttackTypeValue[7] = 5;
 
         AttackName[8] = "Taunt";
         AttackType[8] = "dark";
         AttackPowerAcc[8] = "x/100";
         AttackUses[8] = 10;
         AttackDesc[8] = "taunts the target forcing them to only use damaging moves";
+        AttackTypeValue[8] = 10;
 
         AttackName[9] = "psychic shot";
         AttackType[9] = "psychic";
@@ -221,18 +230,6 @@ public class AttackDatabase : MonoBehaviour {
         AttackUses[32] = 15;
         AttackDesc[32] = "the user sucker punches the target, always going first (even if the target is swutching out)";
         AttackSuperPriority[32] = true;
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

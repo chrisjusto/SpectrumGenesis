@@ -43,6 +43,11 @@ public class charGrimace : charClass {
         Attack02 = 22;
         Attack03 = 23;
         Attack04 = 24;
+
+        attackUses[0] = AttackDatabase.attacks.AttackUses[EquipedAttacks[0]];
+        attackUses[1] = AttackDatabase.attacks.AttackUses[EquipedAttacks[1]];
+        attackUses[2] = AttackDatabase.attacks.AttackUses[EquipedAttacks[2]];
+        attackUses[3] = AttackDatabase.attacks.AttackUses[EquipedAttacks[3]];
     }
 	
 	// Update is called once per frame

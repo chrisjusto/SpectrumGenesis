@@ -23,10 +23,7 @@ public class PartyMenuScript : MonoBehaviour {
 
     private void OnEnable()
     {
-        switch (uiType)
-        {
-
-        }
+        
     }
 
 

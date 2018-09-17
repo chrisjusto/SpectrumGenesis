@@ -44,6 +44,11 @@ public class charLia : charClass {
         Attack02 = 10;
         Attack03 = 11;
         Attack04 = 12;
+
+        attackUses[0] = AttackDatabase.attacks.AttackUses[EquipedAttacks[0]];
+        attackUses[1] = AttackDatabase.attacks.AttackUses[EquipedAttacks[1]];
+        attackUses[2] = AttackDatabase.attacks.AttackUses[EquipedAttacks[2]];
+        attackUses[3] = AttackDatabase.attacks.AttackUses[EquipedAttacks[3]];
     }
 
 }

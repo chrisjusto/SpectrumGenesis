@@ -46,6 +46,11 @@ public class charRieker : charClass {
         Attack02 = 30;
         Attack03 = 31;
         Attack04 = 32;
+
+        attackUses[0] = AttackDatabase.attacks.AttackUses[EquipedAttacks[0]];
+        attackUses[1] = AttackDatabase.attacks.AttackUses[EquipedAttacks[1]];
+        attackUses[2] = AttackDatabase.attacks.AttackUses[EquipedAttacks[2]];
+        attackUses[3] = AttackDatabase.attacks.AttackUses[EquipedAttacks[3]];
     }
 	
 	// Update is called once per frame

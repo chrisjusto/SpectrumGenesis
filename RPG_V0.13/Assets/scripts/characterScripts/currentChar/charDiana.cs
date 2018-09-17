@@ -47,6 +47,11 @@ public class charDiana : charClass {
         Attack03 = 7;
         Attack04 = 8;
 
+        attackUses[0] = AttackDatabase.attacks.AttackUses[EquipedAttacks[0]];
+        attackUses[1] = AttackDatabase.attacks.AttackUses[EquipedAttacks[1]];
+        attackUses[2] = AttackDatabase.attacks.AttackUses[EquipedAttacks[2]];
+        attackUses[3] = AttackDatabase.attacks.AttackUses[EquipedAttacks[3]];
+
     }
 	
 	// Update is called once per frame

@@ -24,6 +24,11 @@ public class charClass : MonoBehaviour {
     public int Attack02;
     public int Attack03;
     public int Attack04;
+    public int[] EquipedAttacks = new int[4];
+
+
+    public int[] attackUses = new int[4];
+
 
     public Sprite typeSprite01;
     public Sprite typeSprite02;
@@ -50,6 +55,22 @@ public class charClass : MonoBehaviour {
     public string backSprite;
     public Sprite portrait;
 
+    //mofifiers
+
+    public int ACCMOD;
+    public int ATKMOD;
+    public int DEFMOD;
+    public int SDEFMOD;
+    public int SATKMOD;
+    public int SPDMOD;
+
+    //status effects 0=none 1=burn 2=poison 3=sleep 4=freeze 5=paralyze
+    public int StatusEffect;
+
+
+    /// <summary>
+    /// ////////
+    /// </summary>
 
     public Sprite charSprite;
     public string spriteLocation;
@@ -185,6 +206,14 @@ public class charClass : MonoBehaviour {
         }
 
     }
+    //public void SetAttacksLeft()
+    //{
+    //    foreach (int uses in attackUses)
+    //    {
+    //        attackUses[uses] = AttackDatabase.attacks.AttackUses[uses];
+    //    }
+
+    //}
 
     public void Ability()
     {
