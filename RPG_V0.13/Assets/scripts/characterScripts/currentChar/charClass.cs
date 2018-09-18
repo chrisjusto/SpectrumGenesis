@@ -66,6 +66,7 @@ public class charClass : MonoBehaviour {
 
     //status effects 0=none 1=burn 2=poison 3=sleep 4=freeze 5=paralyze
     public int StatusEffect;
+    public bool charging;
 
 
     /// <summary>

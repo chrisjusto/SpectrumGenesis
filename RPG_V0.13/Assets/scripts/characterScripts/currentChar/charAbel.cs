@@ -16,7 +16,7 @@ public class charAbel : charClass
         PrimaryType = 2;
         SecondaryType = 0;
 
-        typeWeekness[0] = 2;
+        typeWeekness[0] = 3;
         typeWeekness[1] = 5;
         typeWeekness[2] = 6;
 

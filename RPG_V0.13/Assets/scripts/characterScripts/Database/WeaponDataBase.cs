@@ -207,6 +207,415 @@ public class WeaponDataBase : MonoBehaviour {
                     resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " attacked with a royal greatsword,  and missed";
                 }
                 break;
+            case 3:
+                //ARCHMAGE BOW 60/100 SATK ARCHANE
+                attackDamage = 60;
+
+                Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.sATK / DefendingPlayer.sDEF)) / 3;
+
+                Type = 12;
+                Debug.Log(DefendingPlayer);
+
+                // DID ATTACK HIT?
+                if ((100 + AttackingPlayer.ACCMOD) >= Random.Range(1, 100))
+                {
+                    if (Type == AttackingPlayer.Type01 || Type == AttackingPlayer.Type02)
+                    {
+                        stab = 1.5F;
+                    }
+                    else if (Type != AttackingPlayer.Type01 && Type != AttackingPlayer.Type02)
+                    {
+                        stab = 1;
+                    }
+                    foreach (int n in DefendingPlayer.typeWeekness)
+                    {
+                        if (n == Type)
+                        {
+                            effective = 2;
+                            wasEffective = "super effective";
+                            break;
+                        }
+                        else if (n != Type)
+                        {
+                            effective = 1;
+                            wasEffective = "effective";
+                            Debug.Log("weekness" + n);
+                        }
+
+
+
+                    }
+                    if (effective != 2)
+                    {
+                        foreach (int n in DefendingPlayer.typeStrength)
+                        {
+                            if (n == Type)
+                            {
+                                effective = 0.5F;
+                                wasEffective = "not very effective";
+                                break;
+                            }
+                            else if (n != Type)
+                            {
+                                effective = 1;
+                                wasEffective = "effective";
+                            }
+                        }
+                    }
+
+                    var critChance = 95;
+                    var crit = 1.0F;
+
+                    if (critChance > Random.Range(0, 100))
+                    {
+                        crit = 1.5F;
+                    }
+                    else
+                    {
+                        crit = 1F;
+                    }
+
+                    var finalDamage = Damage * effective * stab * crit;
+
+                    DefendingPlayer.currentHealth = DefendingPlayer.currentHealth - finalDamage;
+
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " attacked with the archmages bow it was " + wasEffective + "!";
+
+                }
+                else
+                {
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " attacked with the archmages bow,  and missed";
+                }
+                break;
+            case 4:
+                //TOME OF WAVES 60/100 SATK WATER
+                attackDamage = 60;
+
+                Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.sATK / DefendingPlayer.sDEF)) / 3;
+
+                Type = 3;
+                Debug.Log(DefendingPlayer);
+
+                // DID ATTACK HIT?
+                if ((100 + AttackingPlayer.ACCMOD) >= Random.Range(1, 100))
+                {
+                    if (Type == AttackingPlayer.Type01 || Type == AttackingPlayer.Type02)
+                    {
+                        stab = 1.5F;
+                    }
+                    else if (Type != AttackingPlayer.Type01 || Type != AttackingPlayer.Type02)
+                    {
+                        stab = 1;
+                    }
+                    foreach (int n in DefendingPlayer.typeWeekness)
+                    {
+                        if (n == Type)
+                        {
+                            effective = 2;
+                            wasEffective = "super effective";
+                            break;
+                        }
+                        else if (n != Type)
+                        {
+                            effective = 1;
+                            wasEffective = "effective";
+                        }
+
+
+
+                    }
+                    if (effective != 2)
+                    {
+                        foreach (int n in DefendingPlayer.typeStrength)
+                        {
+                            if (n == Type)
+                            {
+                                effective = 0.5F;
+                                wasEffective = "not very effective";
+                                break;
+                            }
+                            else if (n != Type)
+                            {
+                                effective = 1;
+                                wasEffective = "effective";
+                            }
+                        }
+                    }
+
+                    var critChance = 95;
+                    var crit = 1.0F;
+
+                    if (critChance > Random.Range(0, 100))
+                    {
+                        crit = 1.5F;
+                    }
+                    else
+                    {
+                        crit = 1F;
+                    }
+
+                    var finalDamage = Damage * effective * stab * crit;
+
+                    DefendingPlayer.currentHealth = DefendingPlayer.currentHealth - finalDamage;
+
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " casted a spell from the Tome of waves, " + wasEffective + "!";
+
+                }
+                else
+                {
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " casted a spell from the tome fo waves,  and missed";
+                }
+                break;
+            case 5:
+                //tHROWING KNIVES ATK 40/100 NORMAL +CRITCHANCE
+                attackDamage = 40;
+
+                Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.ATK / DefendingPlayer.DEF)) / 3;
+
+                Type = 1;
+                Debug.Log(DefendingPlayer);
+
+                // DID ATTACK HIT?
+                if ((100 + AttackingPlayer.ACCMOD) >= Random.Range(1, 100))
+                {
+                    if (Type == AttackingPlayer.Type01 || Type == AttackingPlayer.Type02)
+                    {
+                        stab = 1.5F;
+                    }
+                    else if (Type != AttackingPlayer.Type01 && Type != AttackingPlayer.Type02)
+                    {
+                        stab = 1;
+                    }
+                    foreach (int n in DefendingPlayer.typeWeekness)
+                    {
+                        if (n == Type)
+                        {
+                            effective = 2;
+                            wasEffective = "super effective";
+                            break;
+                        }
+                        else if (n != Type)
+                        {
+                            effective = 1;
+                            wasEffective = "effective";
+                        }
+
+
+
+                    }
+                    if (effective != 2)
+                    {
+                        foreach (int n in DefendingPlayer.typeStrength)
+                        {
+                            if (n == Type)
+                            {
+                                effective = 0.5F;
+                                wasEffective = "not very effective";
+                                break;
+                            }
+                            else if (n != Type)
+                            {
+                                effective = 1;
+                                wasEffective = "effective";
+                            }
+                        }
+                    }
+
+                    var critChance = 85;
+                    var crit = 1.0F;
+
+                    if (critChance > Random.Range(0, 100))
+                    {
+                        crit = 1.5F;
+                    }
+                    else
+                    {
+                        crit = 1F;
+                    }
+
+                    var finalDamage = Damage * effective * stab * crit;
+
+                    DefendingPlayer.currentHealth = DefendingPlayer.currentHealth - finalDamage;
+
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " threw a knife, " + wasEffective + "!";
+
+                }
+                else
+                {
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " threw a knige,  and missed";
+                }
+                break;
+            case 6:
+                //STRIKING TOME 60/100 ELECTRIC SATK
+                attackDamage = 60;
+
+                Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.sATK / DefendingPlayer.sDEF)) / 3;
+
+                Type = 8;
+                Debug.Log(DefendingPlayer);
+
+                // DID ATTACK HIT?
+                if ((100 + AttackingPlayer.ACCMOD) >= Random.Range(1, 100))
+                {
+                    if (Type == AttackingPlayer.Type01 || Type == AttackingPlayer.Type02)
+                    {
+                        stab = 1.5F;
+                    }
+                    else if (Type != AttackingPlayer.Type01 || Type != AttackingPlayer.Type02)
+                    {
+                        stab = 1;
+                    }
+                    foreach (int n in DefendingPlayer.typeWeekness)
+                    {
+                        if (n == Type)
+                        {
+                            effective = 2;
+                            wasEffective = "super effective";
+                            break;
+                        }
+                        else if (n != Type)
+                        {
+                            effective = 1;
+                            wasEffective = "effective";
+                        }
+
+
+
+                    }
+                    if (effective != 2)
+                    {
+                        foreach (int n in DefendingPlayer.typeStrength)
+                        {
+                            if (n == Type)
+                            {
+                                effective = 0.5F;
+                                wasEffective = "not very effective";
+                                break;
+                            }
+                            else if (n != Type)
+                            {
+                                effective = 1;
+                                wasEffective = "effective";
+                            }
+                        }
+                    }
+
+                    var critChance = 95;
+                    var crit = 1.0F;
+
+                    if (critChance > Random.Range(0, 100))
+                    {
+                        crit = 1.5F;
+                    }
+                    else
+                    {
+                        crit = 1F;
+                    }
+
+                    var finalDamage = Damage * effective * stab * crit;
+
+                    DefendingPlayer.currentHealth = DefendingPlayer.currentHealth - finalDamage;
+
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " casted a spell from the striking tome, " + wasEffective + "!";
+
+                }
+                else
+                {
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " casted a spell from the strinking tome,  and missed";
+                }
+                break;
+            case 7:
+                //STAFF OF ANGELS SATK 120/100 LIGHT TAKES 1 TURN TO CHARGE
+
+
+                if (AttackingPlayer.charging == true)
+                {
+                    attackDamage = 120;
+
+                    Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.sATK / DefendingPlayer.sDEF)) / 3;
+
+                    Type = 9;
+                    Debug.Log(DefendingPlayer);
+
+                    // DID ATTACK HIT?
+                    if ((100 + AttackingPlayer.ACCMOD) >= Random.Range(1, 100))
+                    {
+                        if (Type == AttackingPlayer.Type01 || Type == AttackingPlayer.Type02)
+                        {
+                            stab = 1.5F;
+                        }
+                        else if (Type != AttackingPlayer.Type01 || Type != AttackingPlayer.Type02)
+                        {
+                            stab = 1;
+                        }
+                        foreach (int n in DefendingPlayer.typeWeekness)
+                        {
+                            if (n == Type)
+                            {
+                                effective = 2;
+                                wasEffective = "super effective";
+                                break;
+                            }
+                            else if (n != Type)
+                            {
+                                effective = 1;
+                                wasEffective = "effective";
+                            }
+
+
+
+                        }
+                        if (effective != 2)
+                        {
+                            foreach (int n in DefendingPlayer.typeStrength)
+                            {
+                                if (n == Type)
+                                {
+                                    effective = 0.5F;
+                                    wasEffective = "not very effective";
+                                    break;
+                                }
+                                else if (n != Type)
+                                {
+                                    effective = 1;
+                                    wasEffective = "effective";
+                                }
+                            }
+                        }
+
+                        var critChance = 95;
+                        var crit = 1.0F;
+
+                        if (critChance > Random.Range(0, 100))
+                        {
+                            crit = 1.5F;
+                        }
+                        else
+                        {
+                            crit = 1F;
+                        }
+
+                        var finalDamage = Damage * effective * stab * crit;
+
+                        DefendingPlayer.currentHealth = DefendingPlayer.currentHealth - finalDamage;
+
+                        resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " casted a spell from the Tome of waves, " + wasEffective + "!";
+
+                    }
+                    else
+                    {
+                        resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " casted a spell from the tome fo waves,  and missed";
+                    }
+                }
+                else if (AttackingPlayer.charging == false)
+                {
+                    AttackingPlayer.charging = true;
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " is charging a powerful attack!";
+                }
+
+
+               
+                break;
 
 
         }

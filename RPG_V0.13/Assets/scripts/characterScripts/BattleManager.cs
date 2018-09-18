@@ -32,9 +32,17 @@ public class BattleManager : MonoBehaviour
     private int PlayerToSwitch;
     private int EnemyToSwitch;
 
+    private bool PlayerStatusEffected;
+    private bool EnemyStatusEffected;
+    private int PlayerStatusTurnCount;
+    private int EnemyStatusTurnCount;
+
     //0=switch 1=standerdAttack 2-5=selected attack
     private int SelectedEnemyAction;
     public int PlayerSelectedAction;
+
+    private bool PlayerStatusEffectDisplayed;
+    private bool EnemyStatusEffectDisplayed;
 
 
 
@@ -158,6 +166,8 @@ public class BattleManager : MonoBehaviour
         TurnManager();
     }
 
+    //RESAULTS BUTTON FUNCTION
+
     public void ResaultsButton()
     {
 
@@ -165,6 +175,20 @@ public class BattleManager : MonoBehaviour
         {
             ResaultsPanel.SetActive(false);
             BackToMenuSelectionPanel = false;
+            PlayerUsedAction = false;
+            EnemyUsedAction = false;
+            PlayerStatusEffectDisplayed = false;
+            EnemyStatusEffectDisplayed = false;
+        }
+        else if (PlayerStatusEffectDisplayed == true)
+        {
+            PlayerStatusEffectDisplayed = false;
+            CallEnemyStatusEffect();           
+        }
+        else if (EnemyStatusEffectDisplayed == true)
+        {
+            EnemyStatusEffectDisplayed = false;
+            CallFinalEndTurn();
         }
         else if (BackToMenuSelectionPanel == false)
         {
@@ -180,10 +204,149 @@ public class BattleManager : MonoBehaviour
     public void TurnManager()
 
     {
-        Debug.Log("turn begins");
-       if (PlayerUsedAction && EnemyUsedAction == true)
+        //ENEMY AI ACTIONS
+        if( Data.partyData.ActiveEnemy.charging == true)
         {
-            //will run end of turn sequence
+            
+        }
+
+        if (EnemyUsedAction == false)
+        {
+            SelectedEnemyAction = Random.Range(0, 5);
+            if (SelectedEnemyAction == 0)
+            {
+                EnemySwitched = true;
+            }
+        }
+        //STATUS EFFECT CHECKS
+        if (Data.partyData.ActiveChar.StatusEffect ==3 || Data.partyData.ActiveChar.StatusEffect ==4 && PlayerSwitched != true && PlayerUsedAction == false)
+        {
+            switch (Data.partyData.ActiveChar.StatusEffect)
+            {
+                case 3:
+                    ResaultsPanel.SetActive(true);
+
+                    if (PlayerStatusTurnCount >= 3)
+                    {
+                        if(Random.Range (1,2) == 2)
+                        {
+
+                            ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveChar.Name + " is asleep, and has yet to awaken!";
+                            PlayerStatusTurnCount = PlayerStatusTurnCount + 1;
+                            PlayerUsedAction = true;
+
+                        }
+                        else
+                        {
+                            Data.partyData.ActiveChar.StatusEffect = 0;
+                            PlayerStatusTurnCount = 0;
+                            ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveChar.Name + " has woken up from a slumber!";
+
+                        }
+                    }
+                    else if (PlayerStatusTurnCount < 3)
+                    {
+                        ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveChar.Name + " is asleep, and has yet to awaken!";
+                        PlayerStatusTurnCount = PlayerStatusTurnCount + 1;
+                        PlayerUsedAction = true;
+                    }
+                    break;
+                case 4:
+                    ResaultsPanel.SetActive(true);
+
+                    if (PlayerStatusTurnCount >= 3)
+                    {
+                        if (Random.Range(1, 2) == 2)
+                        {
+
+                            ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveChar.Name + " is Frozen and cannot move!";
+                            PlayerStatusTurnCount = PlayerStatusTurnCount + 1;
+                            PlayerUsedAction = true;
+
+                        }
+                        else
+                        {
+                            Data.partyData.ActiveChar.StatusEffect = 0;
+                            PlayerStatusTurnCount = 0;
+                            ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveChar.Name + " has broken from the icey prison!";
+
+                        }
+                    }
+                    else if (PlayerStatusTurnCount < 3)
+                    {
+                        ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveChar.Name + " is frozen and cannot move!";
+                        PlayerStatusTurnCount = PlayerStatusTurnCount + 1;
+                        PlayerUsedAction = true;
+                    }
+                    break;
+            }
+        }      
+        else if (Data.partyData.ActiveEnemy.StatusEffect == 3 || Data.partyData.ActiveEnemy.StatusEffect == 4 && EnemySwitched != true && EnemyUsedAction == false)
+        {
+            //CHECK ENEMY STATUS EFFECTS
+            switch (Data.partyData.ActiveEnemy.StatusEffect)
+            {
+                case 3:
+                    ResaultsPanel.SetActive(true);
+
+                    if (EnemyStatusTurnCount >= 3)
+                    {
+                        if (Random.Range(1, 2) == 2)
+                        {
+
+                            ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveEnemy.Name + " is asleep, and has yet to awaken!";
+                            EnemyStatusTurnCount = EnemyStatusTurnCount + 1;
+                            EnemyUsedAction = true;
+
+                        }
+                        else
+                        {
+                            Data.partyData.ActiveEnemy.StatusEffect = 0;
+                            EnemyStatusTurnCount = 0;
+                            ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveEnemy.Name + " has woken up from a slumber!";
+
+                        }
+                    }
+                    else if (EnemyStatusTurnCount < 3)
+                    {
+                        ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveEnemy.Name + " is asleep, and has yet to awaken!";
+                        EnemyStatusTurnCount = EnemyStatusTurnCount + 1;
+                        EnemyUsedAction = true;
+                    }
+                    break;
+                case 4:
+                    ResaultsPanel.SetActive(true);
+
+                    if (EnemyStatusTurnCount >= 3)
+                    {
+                        if (Random.Range(1, 2) == 2)
+                        {
+
+                            ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveEnemy.Name + " is Frozen and cannot move!";
+                            EnemyStatusTurnCount = EnemyStatusTurnCount + 1;
+                            EnemyUsedAction = true;
+
+                        }
+                        else
+                        {
+                            Data.partyData.ActiveEnemy.StatusEffect = 0;
+                            EnemyStatusTurnCount = 0;
+                            ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveEnemy.Name + " has broken from the icey prison!";
+
+                        }
+                    }
+                    else if (EnemyStatusTurnCount < 3)
+                    {
+                        ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveEnemy.Name + " is frozen and cannot move!";
+                        EnemyStatusTurnCount = EnemyStatusTurnCount + 1;
+                        EnemyUsedAction = true;
+                    }
+                    break;
+            }
+        }
+        else if (PlayerUsedAction && EnemyUsedAction == true)
+        {
+            CallEndTurn();
 
         }
        else if (PlayerUsedAction == true)
@@ -226,12 +389,6 @@ public class BattleManager : MonoBehaviour
        else if (PlayerUsedAction == false && EnemyUsedAction == false)
         {
             //BEGIN TURN SEQUENCE
-            //ENEMY AI 
-            SelectedEnemyAction = Random.Range(0, 5);
-            if (SelectedEnemyAction == 0)
-            {
-                EnemySwitched = true;
-            }
             
             //RUN SPEED CHECK
             if (Data.partyData.ActiveChar.SPD > Data.partyData.ActiveEnemy.SPD)
@@ -568,17 +725,71 @@ public class BattleManager : MonoBehaviour
     //CALL PLAYERSTATUSEFFECTS
     public void CallPlayerStatusEffect()
     {
-       // if ()
+       if (Data.partyData.ActiveChar.StatusEffect == 0)
+        {
+            CallEnemyStatusEffect();
+        }
+       else if (Data.partyData.ActiveChar.StatusEffect == 1 || Data.partyData.ActiveChar.StatusEffect == 2)
+        {
+            switch (Data.partyData.ActiveChar.StatusEffect)
+            {
+                //BURN
+                case 1:
+                    Data.partyData.ActiveChar.currentHealth = (Data.partyData.ActiveChar.currentHealth - (Data.partyData.ActiveChar.maxHealth / 10));
+                    ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveChar.Name + " has been afflicted by burn!";
+                    PlayerStatusEffectDisplayed = true;
+                    break;
+                case 2:
+                    Data.partyData.ActiveChar.currentHealth = (Data.partyData.ActiveChar.currentHealth - (Data.partyData.ActiveChar.maxHealth / 10));
+                    ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveChar.Name + " has been afflicted by poinson!";
+                    PlayerStatusEffectDisplayed = true;
+                    break;
+            }
+        }
+        else
+        {
+            CallEnemyStatusEffect();
+        }
     }
     //CALL ENEMYsTATUSEFFECTS
     public void CallEnemyStatusEffect()
     {
-
+        if (Data.partyData.ActiveEnemy.StatusEffect == 0)
+        {
+            CallFinalEndTurn();
+        }
+        else if (Data.partyData.ActiveEnemy.StatusEffect == 1 || Data.partyData.ActiveEnemy.StatusEffect == 2)
+        {
+            switch (Data.partyData.ActiveEnemy.StatusEffect)
+            {
+                //BURN
+                case 1:
+                    Data.partyData.ActiveEnemy.currentHealth = (Data.partyData.ActiveEnemy.currentHealth - (Data.partyData.ActiveEnemy.maxHealth / 10));
+                    ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveEnemy.Name + " has been afflicted by burn!";
+                    EnemyStatusEffectDisplayed = true;
+                    break;
+                case 2:
+                    Data.partyData.ActiveEnemy.currentHealth = (Data.partyData.ActiveEnemy.currentHealth - (Data.partyData.ActiveEnemy.maxHealth / 10));
+                    ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveEnemy.Name + " has been afflicted by poinson!";
+                    EnemyStatusEffectDisplayed = true;
+                    break;
+            }
+        }
+        else
+        {
+            CallFinalEndTurn();
+        }
     }
     //CALLS END OF TURN CHECKS FOR STATUS EFFECTS
     public void CallEndTurn()
     {
-
+        CallPlayerStatusEffect();
+    }
+    public void CallFinalEndTurn()
+    {
+        PlayerSwitched = false;
+        EnemySwitched = false;
+        BackToMenuSelectionPanel = true;
     }
 
 }
