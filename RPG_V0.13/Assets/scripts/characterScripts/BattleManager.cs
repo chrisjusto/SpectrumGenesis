@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class BattleManager : MonoBehaviour
 {
 
+
+
     public GameObject characterUi;
     public GameObject enemyUi;
     public GameObject playerSprite;
@@ -175,24 +177,25 @@ public class BattleManager : MonoBehaviour
         {
             ResaultsPanel.SetActive(false);
             BackToMenuSelectionPanel = false;
-            PlayerUsedAction = false;
-            EnemyUsedAction = false;
-            PlayerStatusEffectDisplayed = false;
-            EnemyStatusEffectDisplayed = false;
+
+
         }
         else if (PlayerStatusEffectDisplayed == true)
         {
             PlayerStatusEffectDisplayed = false;
-            CallEnemyStatusEffect();           
+            CallEnemyStatusEffect();
+ 
         }
         else if (EnemyStatusEffectDisplayed == true)
         {
             EnemyStatusEffectDisplayed = false;
             CallFinalEndTurn();
+
         }
         else if (BackToMenuSelectionPanel == false)
         {
             TurnManager();
+
         }
 
 
@@ -205,14 +208,12 @@ public class BattleManager : MonoBehaviour
 
     {
         //ENEMY AI ACTIONS
-        if( Data.partyData.ActiveEnemy.charging == true)
-        {
-            
-        }
 
-        if (EnemyUsedAction == false)
+        if (EnemyUsedAction == false && Data.partyData.ActiveEnemy.charging == false)
         {
-            SelectedEnemyAction = Random.Range(0, 5);
+            //SelectedEnemyAction = Random.Range(0, 5);
+            SelectedEnemyAction = 1;
+
             if (SelectedEnemyAction == 0)
             {
                 EnemySwitched = true;
@@ -727,7 +728,9 @@ public class BattleManager : MonoBehaviour
     {
        if (Data.partyData.ActiveChar.StatusEffect == 0)
         {
+
             CallEnemyStatusEffect();
+
         }
        else if (Data.partyData.ActiveChar.StatusEffect == 1 || Data.partyData.ActiveChar.StatusEffect == 2)
         {
@@ -756,7 +759,9 @@ public class BattleManager : MonoBehaviour
     {
         if (Data.partyData.ActiveEnemy.StatusEffect == 0)
         {
+
             CallFinalEndTurn();
+
         }
         else if (Data.partyData.ActiveEnemy.StatusEffect == 1 || Data.partyData.ActiveEnemy.StatusEffect == 2)
         {
@@ -783,13 +788,38 @@ public class BattleManager : MonoBehaviour
     //CALLS END OF TURN CHECKS FOR STATUS EFFECTS
     public void CallEndTurn()
     {
+
         CallPlayerStatusEffect();
+        
     }
     public void CallFinalEndTurn()
     {
-        PlayerSwitched = false;
-        EnemySwitched = false;
-        BackToMenuSelectionPanel = true;
+        if (Data.partyData.ActiveChar.charging == true)
+        {
+            EnemySwitched = false;
+            PlayerSwitched = false;
+            PlayerUsedAction = false;
+            EnemyUsedAction = false;
+            PlayerStatusEffectDisplayed = false;
+            EnemyStatusEffectDisplayed = false;
+
+            TurnManager();
+
+        }
+        else if (Data.partyData.ActiveChar.charging == false)
+        {
+            PlayerUsedAction = false;
+            EnemyUsedAction = false;
+            PlayerStatusEffectDisplayed = false;
+            EnemyStatusEffectDisplayed = false;
+            PlayerSwitched = false;
+            EnemySwitched = false;
+            BackToMenuSelectionPanel = true;
+            ResaultsPanel.SetActive(false);
+            BackToMenuSelectionPanel = false;
+
+        }
+
     }
 
 }
