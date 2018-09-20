@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class CharacterSelectController : MonoBehaviour {
@@ -46,6 +47,8 @@ public class CharacterSelectController : MonoBehaviour {
     public GameObject grimace;
     public GameObject evenese;
     public GameObject rieker;
+    public GameObject goToNewScene;
+    public int[] characters = new int[4];
 
 
     public void SeeInfo()
@@ -186,10 +189,31 @@ public class CharacterSelectController : MonoBehaviour {
                 Data.partyData.partyMember04 = Data.partyData.ActiveChar;
                 partyMember04.GetComponent<Image>().sprite = Data.partyData.ActiveChar.portrait;
                 Data.partyData.ActiveChar = null;
-
+                NewUI();
                 break;
         }
         
+
+    }
+
+    public void NewUI()
+    {
+
+        goToNewScene.SetActive(true);
+
+    }
+
+    public void CallNewScene()
+    {
+
+        Data.partyData.EnemyParty01 = Data.partyData.gameObject.AddComponent<charGrimace>();
+        Data.partyData.EnemyParty02 = Data.partyData.gameObject.AddComponent<charEvenese>();
+        Data.partyData.EnemyParty03 = Data.partyData.gameObject.AddComponent<charRieker>();
+        Data.partyData.EnemyParty04 = Data.partyData.gameObject.AddComponent<charKirah>();
+
+        SceneManager.LoadScene(1);
+
+
 
     }
 

@@ -27,6 +27,13 @@ public class charLia : charClass {
         sDEF = 550;
         SPD = 600;
 
+        ACCMOD = 1;
+        ATKMOD = 1;
+        DEFMOD = 1;
+        SDEFMOD = 1;
+        SATKMOD = 1;
+        SPDMOD = 1;
+
         maxHealth = HP * 2;
         currentHealth = HP * 2;
 

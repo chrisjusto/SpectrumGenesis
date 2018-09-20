@@ -73,6 +73,7 @@ public class charClass : MonoBehaviour {
     public bool charging;
     public bool blocked;
     public bool hasBlockedThisRound;
+    public bool[] tripleStrike = new bool[3];
 
 
     /// <summary>

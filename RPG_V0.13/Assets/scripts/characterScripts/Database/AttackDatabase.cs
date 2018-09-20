@@ -7,7 +7,7 @@ public class AttackDatabase : MonoBehaviour {
 
     public static AttackDatabase attacks;
 
-    //MOVES THAT NEED TWEEKING GUST! BEARTRAP! BLESSING! DARKNESS! TAUNT! HEALING TAG!
+    //MOVES THAT NEED TWEEKING GUST! TAUNT! HEALING TAG!
 
 
     public string[] AttackName = new string[33] { "", "OriginSlash", "Sharpen", "Psychic Blade", "Scortch", "Block", "Stone Armour", "Earth Bash", "Taunt", "psychic shot", "poison arrow", "Bear Trap", "Elvish Song", "thunder storm", "meditate","gust","grave Blast","swift strike","scoff","only punch","hone mind","psychic torment","Phycic shock","beam cannon","hone mind","ice shard","healing light","holy fire","blessing","triple strike","darkness","paralyze powder","cheep shot" };
@@ -174,7 +174,7 @@ public class AttackDatabase : MonoBehaviour {
         AttackType[22] = "psychic";
         AttackPowerAcc[22] = "40/100";
         AttackUses[22] = 15;
-        AttackDesc[22] = "the users invades the mind of the target invoking real life pain that has a 5% chance to parlyze";
+        AttackDesc[22] = "the users invades the mind of the target invoking real life pain";
 
         AttackName[23] = "beam cannon";
         AttackType[23] = "archane";
@@ -224,11 +224,11 @@ public class AttackDatabase : MonoBehaviour {
         AttackUses[30] = 10;
         AttackDesc[30] = "shrouds the battlefield in darkness lowering the accuracy of all non-dark types for 5 turns";
 
-        AttackName[31] = "paralyze powder";
+        AttackName[31] = "sleep powder";
         AttackType[31] = "nature";
         AttackPowerAcc[31] = "x/85";
         AttackUses[31] = 10;
-        AttackDesc[31] = "a special poison that parlyzes the taget";
+        AttackDesc[31] = "a special poison that puts the target to sleep";
 
         AttackName[32] = "cheep shot";
         AttackType[32] = "dark";
@@ -713,7 +713,7 @@ public class AttackDatabase : MonoBehaviour {
                 //POISON ARROW
                 attackDamage = 30;
 
-                Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.sATK / DefendingPlayer.sDEF)) / 3;
+                Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.ATK / DefendingPlayer.DEF)) / 3;
 
                 Type = AttackTypeValue[10];
 
@@ -846,7 +846,7 @@ public class AttackDatabase : MonoBehaviour {
                 //elvish song
 
                 AttackingPlayer.currentHealth = AttackingPlayer.currentHealth + (AttackingPlayer.maxHealth * 1 / 4);
-                if (AttackingPlayer.currentHealth > AttackingPlayer.maxHealth)
+                if (AttackingPlayer.currentHealth >= AttackingPlayer.maxHealth)
                 {
                     AttackingPlayer.currentHealth = AttackingPlayer.maxHealth;
                 }
@@ -858,7 +858,7 @@ public class AttackDatabase : MonoBehaviour {
                 //thunderStorm
                 attackDamage = 60;
 
-                Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.ATK / DefendingPlayer.DEF)) / 3;
+                Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.sATK / DefendingPlayer.sDEF)) / 3;
 
                 Type = AttackTypeValue[13];
 
@@ -968,113 +968,113 @@ public class AttackDatabase : MonoBehaviour {
                 }
                 break;
             case 15:
-                //GUST
-                attackDamage = 40;
+                ////GUST
+                //attackDamage = 40;
 
-                Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.ATK / DefendingPlayer.DEF)) / 3;
+                //Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.sATK / DefendingPlayer.sDEF)) / 3;
 
-                Type = AttackTypeValue[15];
+                //Type = AttackTypeValue[15];
 
-                // DID ATTACK HIT?
-                if ((100 + AttackingPlayer.ACCMOD) >= Random.Range(1, 100))
-                {
-                    if (Type == AttackingPlayer.Type01 || Type == AttackingPlayer.Type02)
-                    {
-                        stab = 1.5F;
-                    }
-                    else if (Type != AttackingPlayer.Type01 && Type != AttackingPlayer.Type02)
-                    {
-                        stab = 1;
-                    }
-                    foreach (int n in DefendingPlayer.typeWeekness)
-                    {
-                        if (n == 0)
-                        {
+                //// DID ATTACK HIT?
+                //if ((100 + AttackingPlayer.ACCMOD) >= Random.Range(1, 100))
+                //{
+                //    if (Type == AttackingPlayer.Type01 || Type == AttackingPlayer.Type02)
+                //    {
+                //        stab = 1.5F;
+                //    }
+                //    else if (Type != AttackingPlayer.Type01 && Type != AttackingPlayer.Type02)
+                //    {
+                //        stab = 1;
+                //    }
+                //    foreach (int n in DefendingPlayer.typeWeekness)
+                //    {
+                //        if (n == 0)
+                //        {
 
-                        }
-                        else if (n != 0)
-                        {
-                            if (n == Type)
-                            {
-                                effective = 2;
-                                wasEffective = "super effective";
+                //        }
+                //        else if (n != 0)
+                //        {
+                //            if (n == Type)
+                //            {
+                //                effective = 2;
+                //                wasEffective = "super effective";
 
-                                break;
-                            }
-                            else if (n != Type)
-                            {
-                                effective = 1;
-                                wasEffective = "effective";
-                            }
-                        }
+                //                break;
+                //            }
+                //            else if (n != Type)
+                //            {
+                //                effective = 1;
+                //                wasEffective = "effective";
+                //            }
+                //        }
 
-                    }
-                    if (effective != 2)
-                    {
-                        foreach (int n in DefendingPlayer.typeStrength)
-                        {
-                            if (n == Type)
-                            {
-                                effective = 0.5F;
-                                wasEffective = "not very effective";
-                                break;
-                            }
-                            else if (n != Type)
-                            {
-                                effective = 1;
-                                wasEffective = "effective";
-                            }
-                        }
-                    }
+                //    }
+                //    if (effective != 2)
+                //    {
+                //        foreach (int n in DefendingPlayer.typeStrength)
+                //        {
+                //            if (n == Type)
+                //            {
+                //                effective = 0.5F;
+                //                wasEffective = "not very effective";
+                //                break;
+                //            }
+                //            else if (n != Type)
+                //            {
+                //                effective = 1;
+                //                wasEffective = "effective";
+                //            }
+                //        }
+                //    }
 
-                    var critChance = 95;
-                    var crit = 1F;
+                //    var critChance = 95;
+                //    var crit = 1F;
 
-                    if (critChance > Random.Range(0, 100))
-                    {
-                        crit = 1.5F;
-                    }
-                    else
-                    {
-                        crit = 1F;
-                    }
-
-
-                    var finalDamage = Damage * effective * stab * crit;
-
-                    DefendingPlayer.currentHealth = DefendingPlayer.currentHealth - finalDamage;
+                //    if (critChance > Random.Range(0, 100))
+                //    {
+                //        crit = 1.5F;
+                //    }
+                //    else
+                //    {
+                //        crit = 1F;
+                //    }
 
 
-                    if (DefendingPlayer.currentHealth <= 0)
-                    {
-                        DefendingPlayer.currentHealth = 0;
-                    }
-                    else
-                    {
-                        if (DefendingPlayer == Data.partyData.ActiveEnemy)
-                        {
-                            Manager.EnemyDied();
-                            resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[15] + " on " + DefendingPlayer.Name + " is was " + wasEffective + "! the gust of wind swept them away and " + Data.partyData.ActiveEnemy.Name + " has replaced them in battle!";
+                //    var finalDamage = Damage * effective * stab * crit;
 
-                        }
-                        else if (DefendingPlayer == Data.partyData.ActiveChar)
-                        {
-                            Manager.PlayerDied();
-                            resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[15] + " on " + DefendingPlayer.Name + " is was " + wasEffective + "! the gust of wind swept them away and " + Data.partyData.ActiveEnemy.Name + " has replaced them in battle!";
+                //    DefendingPlayer.currentHealth = DefendingPlayer.currentHealth - finalDamage;
 
-                        }
-                    }
 
-                }
-                else
-                {
-                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[15] + ",  and missed";
-                }
+                //    if (DefendingPlayer.currentHealth <= 0)
+                //    {
+                //        DefendingPlayer.currentHealth = 0;
+                //    }
+                //    else
+                //    {
+                //        if (DefendingPlayer == Data.partyData.ActiveEnemy)
+                //        {
+                //            Manager.EnemyDied();
+                //            resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[15] + " on " + DefendingPlayer.Name + " is was " + wasEffective + "! the gust of wind swept them away and " + Data.partyData.ActiveEnemy.Name + " has replaced them in battle!";
+
+                //        }
+                //        else if (DefendingPlayer == Data.partyData.ActiveChar)
+                //        {
+                //            Manager.PlayerDied();
+                //            resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[15] + " on " + DefendingPlayer.Name + " is was " + wasEffective + "! the gust of wind swept them away and " + Data.partyData.ActiveEnemy.Name + " has replaced them in battle!";
+
+                //        }
+                //    }
+
+                //}
+                //else
+                //{
+                //    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[15] + ",  and missed";
+                //}
                 break;
             case 16:
                 attackDamage = 80;
 
-                Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.ATK / DefendingPlayer.DEF)) / 3;
+                Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.sATK / DefendingPlayer.sDEF)) / 3;
 
                 Type = AttackTypeValue[16];
 
@@ -1286,7 +1286,7 @@ public class AttackDatabase : MonoBehaviour {
                 {
                     attackDamage = 120;
 
-                    Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.sATK / DefendingPlayer.sDEF)) / 3;
+                    Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.ATK / DefendingPlayer.DEF)) / 3;
 
                     Type = AttackTypeValue[19];
 
@@ -1416,7 +1416,7 @@ public class AttackDatabase : MonoBehaviour {
                 }
                 else
                 {
-
+                    Debug.Log("callPhycic tormernt");
 
                     DefendingPlayer.SDEFMOD = DefendingPlayer.SDEFMOD - BaseIncerase;
 
@@ -1518,6 +1518,7 @@ public class AttackDatabase : MonoBehaviour {
                 }
                 break;
             case 23:
+                Debug.Log("call beam cannon");
                 attackDamage = 90;
 
                 Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.sATK / DefendingPlayer.sDEF)) / 3;
@@ -1525,7 +1526,7 @@ public class AttackDatabase : MonoBehaviour {
                 Type = AttackTypeValue[23];
 
                 // DID ATTACK HIT?
-                if ((85 + AttackingPlayer.ACCMOD) >= Random.Range(1, 100))
+                if ((85 + AttackingPlayer.ACCMOD) <= Random.Range(1, 100))
                 {
                     if (Type == AttackingPlayer.Type01 || Type == AttackingPlayer.Type02)
                     {
@@ -1739,21 +1740,21 @@ public class AttackDatabase : MonoBehaviour {
                 }
                 break;
             case 26:
-                //HEALLING TAG!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                ////HEALLING TAG!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-                if (AttackingPlayer == Data.partyData.ActiveChar)
-                {
-                    Manager.PlayerDied();
-                    Data.partyData.ActiveChar.currentHealth = Data.partyData.ActiveChar.currentHealth + (Data.partyData.ActiveChar.maxHealth / 4);
-                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " CALLED ON " + Data.partyData.ActiveChar.Name + " and bestowed them with a healing blessing!"; 
+                //if (AttackingPlayer == Data.partyData.ActiveChar)
+                //{
+                //    Manager.PlayerDied();
+                //    Data.partyData.ActiveChar.currentHealth = Data.partyData.ActiveChar.currentHealth + (Data.partyData.ActiveChar.maxHealth / 4);
+                //    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " CALLED ON " + Data.partyData.ActiveChar.Name + " and bestowed them with a healing blessing!"; 
 
-                }
-                else if (AttackingPlayer == Data.partyData.ActiveEnemy)
-                {
-                    Manager.EnemyDied();
-                    Data.partyData.ActiveChar.currentHealth = Data.partyData.ActiveChar.currentHealth + (Data.partyData.ActiveChar.maxHealth / 4);
-                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " CALLED ON " + Data.partyData.ActiveChar.Name + " and bestowed them with a healing blessing!";
-                }
+                //}
+                //else if (AttackingPlayer == Data.partyData.ActiveEnemy)
+                //{
+                //    Manager.EnemyDied();
+                //    Data.partyData.ActiveChar.currentHealth = Data.partyData.ActiveChar.currentHealth + (Data.partyData.ActiveChar.maxHealth / 4);
+                //    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " CALLED ON " + Data.partyData.ActiveChar.Name + " and bestowed them with a healing blessing!";
+                //}
                 break;
             case 27:
                 //cleansing fire
@@ -1874,23 +1875,504 @@ public class AttackDatabase : MonoBehaviour {
 
                 break;
             case 28:
+                BaseIncerase = 0.4F;
+                actualIncrease = 1.4f;
+
+                if (DefendingPlayer.SDEFMOD <= 2.6)
+                {
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used blessing, and it failed!";
+                }
+                else
+                {
+
+
+                    DefendingPlayer.SDEFMOD = DefendingPlayer.SDEFMOD + BaseIncerase;
+
+
+
+                    DefendingPlayer.sDEF = DefendingPlayer.sDEF * actualIncrease;
+
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[28] + " and raised their special defense!" ;
+
+                }
+                break;
+            case 29:
+                if ( AttackingPlayer.tripleStrike[0] == false)
+                {
+                    attackDamage = 30;
+
+                    Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.ATK / DefendingPlayer.DEF)) / 3;
+
+                    Type = AttackTypeValue[29];
+
+                    // DID ATTACK HIT?
+                    if ((100 + AttackingPlayer.ACCMOD) >= Random.Range(1, 100))
+                    {
+                        if (Type == AttackingPlayer.Type01 || Type == AttackingPlayer.Type02)
+                        {
+                            stab = 1.5F;
+                        }
+                        else if (Type != AttackingPlayer.Type01 && Type != AttackingPlayer.Type02)
+                        {
+                            stab = 1;
+                        }
+                        foreach (int n in DefendingPlayer.typeWeekness)
+                        {
+                            if (n == 0)
+                            {
+
+                            }
+                            else if (n != 0)
+                            {
+                                if (n == Type)
+                                {
+                                    effective = 2;
+                                    wasEffective = "super effective";
+
+                                    break;
+                                }
+                                else if (n != Type)
+                                {
+                                    effective = 1;
+                                    wasEffective = "effective";
+                                }
+                            }
+
+                        }
+                        if (effective != 2)
+                        {
+                            foreach (int n in DefendingPlayer.typeStrength)
+                            {
+                                if (n == Type)
+                                {
+                                    effective = 0.5F;
+                                    wasEffective = "not very effective";
+                                    break;
+                                }
+                                else if (n != Type)
+                                {
+                                    effective = 1;
+                                    wasEffective = "effective";
+                                }
+                            }
+                        }
+
+                        var critChance = 95;
+                        var crit = 1F;
+
+                        if (critChance > Random.Range(0, 100))
+                        {
+                            crit = 1.5F;
+                        }
+                        else
+                        {
+                            crit = 1F;
+                        }
+
+
+                        var finalDamage = Damage * effective * stab * crit;
+
+                        DefendingPlayer.currentHealth = DefendingPlayer.currentHealth - finalDamage;
+
+                        AttackingPlayer.tripleStrike[0] = true;
+
+                        if (AttackingPlayer == Data.partyData.ActiveChar)
+                        {
+                            Manager.PlayerUsedAction = false;
+
+                        }
+                        else if (AttackingPlayer == Data.partyData.ActiveEnemy)
+                        {
+
+                            Manager.EnemyUsedAction = false;
+
+                        }
+
+                        resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[29] + " is was " + wasEffective + "!";
+
+                        if (DefendingPlayer.currentHealth < 0)
+                        {
+                            DefendingPlayer.currentHealth = 0;
+                        }
+
+
+
+                    }
+                    else
+                    {
+                        resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[29] + ",  and missed";
+                        AttackingPlayer.tripleStrike[0] = false;
+                        AttackingPlayer.tripleStrike[1] = false;
+                        AttackingPlayer.tripleStrike[2] = false;
+                    }
+                }
+                else if (AttackingPlayer.tripleStrike[1] == false)
+                {
+                    if (Random.Range(1, 4) <= 2)
+                    {
+                        attackDamage = 30;
+
+                        Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.sATK / DefendingPlayer.sDEF)) / 3;
+
+                        Type = AttackTypeValue[29];
+
+                        // DID ATTACK HIT?
+                        if ((100 + AttackingPlayer.ACCMOD) >= Random.Range(1, 100))
+                        {
+                            if (Type == AttackingPlayer.Type01 || Type == AttackingPlayer.Type02)
+                            {
+                                stab = 1.5F;
+                            }
+                            else if (Type != AttackingPlayer.Type01 && Type != AttackingPlayer.Type02)
+                            {
+                                stab = 1;
+                            }
+                            foreach (int n in DefendingPlayer.typeWeekness)
+                            {
+                                if (n == 0)
+                                {
+
+                                }
+                                else if (n != 0)
+                                {
+                                    if (n == Type)
+                                    {
+                                        effective = 2;
+                                        wasEffective = "super effective";
+
+                                        break;
+                                    }
+                                    else if (n != Type)
+                                    {
+                                        effective = 1;
+                                        wasEffective = "effective";
+                                    }
+                                }
+
+                            }
+                            if (effective != 2)
+                            {
+                                foreach (int n in DefendingPlayer.typeStrength)
+                                {
+                                    if (n == Type)
+                                    {
+                                        effective = 0.5F;
+                                        wasEffective = "not very effective";
+                                        break;
+                                    }
+                                    else if (n != Type)
+                                    {
+                                        effective = 1;
+                                        wasEffective = "effective";
+                                    }
+                                }
+                            }
+
+                            var critChance = 95;
+                            var crit = 1F;
+
+                            if (critChance > Random.Range(0, 100))
+                            {
+                                crit = 1.5F;
+                            }
+                            else
+                            {
+                                crit = 1F;
+                            }
+
+
+                            var finalDamage = Damage * effective * stab * crit;
+
+                            DefendingPlayer.currentHealth = DefendingPlayer.currentHealth - finalDamage;
+
+                            AttackingPlayer.tripleStrike[1] = true;
+
+                            if (AttackingPlayer == Data.partyData.ActiveChar)
+                            {
+                                Manager.PlayerUsedAction = false;
+
+                            }
+                            else if (AttackingPlayer == Data.partyData.ActiveEnemy)
+                            {
+
+                                Manager.EnemyUsedAction = false;
+
+                            }
+
+                            resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[29] + " is was " + wasEffective + "!";
+
+                            if (DefendingPlayer.currentHealth < 0)
+                            {
+                                DefendingPlayer.currentHealth = 0;
+                            }
+
+
+
+                        }
+                        else
+                        {
+                            resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[29] + ",  and missed";
+                            AttackingPlayer.tripleStrike[0] = false;
+                            AttackingPlayer.tripleStrike[1] = false;
+                            AttackingPlayer.tripleStrike[2] = false;
+                        }
+                    }
+                    else
+                    {
+                        AttackingPlayer.tripleStrike[0] = false;
+                        AttackingPlayer.tripleStrike[1] = false;
+                        AttackingPlayer.tripleStrike[2] = false;
+
+                        Manager.TurnManager();
+
+                    }
+                }
+                else if (AttackingPlayer.tripleStrike[2] == false)
+                {
+                    if (Random.Range(1, 4) <= 1)
+                    {
+                        attackDamage = 30;
+
+                        Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.sATK / DefendingPlayer.sDEF)) / 3;
+
+                        Type = AttackTypeValue[29];
+
+                        // DID ATTACK HIT?
+                        if ((100 + AttackingPlayer.ACCMOD) >= Random.Range(1, 100))
+                        {
+                            if (Type == AttackingPlayer.Type01 || Type == AttackingPlayer.Type02)
+                            {
+                                stab = 1.5F;
+                            }
+                            else if (Type != AttackingPlayer.Type01 && Type != AttackingPlayer.Type02)
+                            {
+                                stab = 1;
+                            }
+                            foreach (int n in DefendingPlayer.typeWeekness)
+                            {
+                                if (n == 0)
+                                {
+
+                                }
+                                else if (n != 0)
+                                {
+                                    if (n == Type)
+                                    {
+                                        effective = 2;
+                                        wasEffective = "super effective";
+
+                                        break;
+                                    }
+                                    else if (n != Type)
+                                    {
+                                        effective = 1;
+                                        wasEffective = "effective";
+                                    }
+                                }
+
+                            }
+                            if (effective != 2)
+                            {
+                                foreach (int n in DefendingPlayer.typeStrength)
+                                {
+                                    if (n == Type)
+                                    {
+                                        effective = 0.5F;
+                                        wasEffective = "not very effective";
+                                        break;
+                                    }
+                                    else if (n != Type)
+                                    {
+                                        effective = 1;
+                                        wasEffective = "effective";
+                                    }
+                                }
+                            }
+
+                            var critChance = 95;
+                            var crit = 1F;
+
+                            if (critChance > Random.Range(0, 100))
+                            {
+                                crit = 1.5F;
+                            }
+                            else
+                            {
+                                crit = 1F;
+                            }
+
+
+                            var finalDamage = Damage * effective * stab * crit;
+
+                            DefendingPlayer.currentHealth = DefendingPlayer.currentHealth - finalDamage;
+
+                            AttackingPlayer.tripleStrike[0] = true;
+
+                            resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[29] + " is was " + wasEffective + "!";
+
+                            if (DefendingPlayer.currentHealth < 0)
+                            {
+                                DefendingPlayer.currentHealth = 0;
+                            }
+
+                        }
+                        else
+                        {
+                            resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[29] + ",  and missed";
+                            AttackingPlayer.tripleStrike[0] = false;
+                            AttackingPlayer.tripleStrike[1] = false;
+                            AttackingPlayer.tripleStrike[2] = false;
+                        }
+
+                        AttackingPlayer.tripleStrike[0] = false;
+                        AttackingPlayer.tripleStrike[1] = false;
+                        AttackingPlayer.tripleStrike[2] = false;
+                    }
+                    else
+                    {
+                        AttackingPlayer.tripleStrike[0] = false;
+                        AttackingPlayer.tripleStrike[1] = false;
+                        AttackingPlayer.tripleStrike[2] = false;
+
+                        Manager.TurnManager();
+                    }
+                }
+                break;
+            case 30:
+                if (DefendingPlayer.ACCMOD == -80.00){
+
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used darkness, and it failed!";
+                }
+                else if (DefendingPlayer.ACCMOD > -80.00)
+                {
+
+                    if (DefendingPlayer.ACCMOD == 1)
+                    {
+                        DefendingPlayer.ACCMOD = 0;
+                    }
+                    else
+                    {
+
+                        DefendingPlayer.ACCMOD = DefendingPlayer.ACCMOD - 20;
+                        resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used darkness, and lowered " + DefendingPlayer.Name + " accuracy!";
+
+                    }
+
+                }
+                break;
+            case 31:
+                //sleep powder
+                if (DefendingPlayer.StatusEffect != 0)
+                {
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[31] + " and failed!";
+                }
+                else if (DefendingPlayer.StatusEffect == 0)
+                {
+                    if (Random.Range(0, 100) < 85) //ATTACK HIT
+                    {
+                        DefendingPlayer.StatusEffect = 3;
+                        resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[31] + " and " + DefendingPlayer.Name + " has been put to sleep";
+
+                    }
+                    else // ATTACK MISSED
+                    {
+                        resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[31] + " and failed!";
+                    }
+                }
 
                 break;
+            case 32:
+                attackDamage = 40;
+
+                Damage = (((AttackingPlayer.LVL + attackDamage) * 2) * (AttackingPlayer.ATK / DefendingPlayer.DEF)) / 3;
+
+                Type = AttackTypeValue[32];
+
+                // DID ATTACK HIT?
+                if ((100 + AttackingPlayer.ACCMOD) >= Random.Range(1, 100))
+                {
+                    if (Type == AttackingPlayer.Type01 || Type == AttackingPlayer.Type02)
+                    {
+                        stab = 1.5F;
+                    }
+                    else if (Type != AttackingPlayer.Type01 && Type != AttackingPlayer.Type02)
+                    {
+                        stab = 1;
+                    }
+                    foreach (int n in DefendingPlayer.typeWeekness)
+                    {
+                        if (n == 0)
+                        {
+
+                        }
+                        else if (n != 0)
+                        {
+                            if (n == Type)
+                            {
+                                effective = 2;
+                                wasEffective = "super effective";
+
+                                break;
+                            }
+                            else if (n != Type)
+                            {
+                                effective = 1;
+                                wasEffective = "effective";
+                            }
+                        }
+
+                    }
+                    if (effective != 2)
+                    {
+                        foreach (int n in DefendingPlayer.typeStrength)
+                        {
+                            if (n == Type)
+                            {
+                                effective = 0.5F;
+                                wasEffective = "not very effective";
+                                break;
+                            }
+                            else if (n != Type)
+                            {
+                                effective = 1;
+                                wasEffective = "effective";
+                            }
+                        }
+                    }
+
+                    var critChance = 95;
+                    var crit = 1F;
+
+                    if (critChance > Random.Range(0, 100))
+                    {
+                        crit = 1.5F;
+                    }
+                    else
+                    {
+                        crit = 1F;
+                    }
 
 
+                    var finalDamage = Damage * effective * stab * crit;
 
+                    DefendingPlayer.currentHealth = DefendingPlayer.currentHealth - finalDamage;
 
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[32] + " is was " + wasEffective + "!";
 
+                    if (DefendingPlayer.currentHealth < 0)
+                    {
+                        DefendingPlayer.currentHealth = 0;
+                    }
 
-
-
-
+                }
+                else
+                {
+                    resaultstext.GetComponent<Text>().text = AttackingPlayer.Name + " used " + AttackName[32] + ",  and missed";
+                }
+                break;
 
         }
 
-
-
     }
-
 
 }

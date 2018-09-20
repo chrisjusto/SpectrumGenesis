@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class BattleManager : MonoBehaviour
@@ -355,8 +356,8 @@ public class BattleManager : MonoBehaviour
 
         if (EnemyUsedAction == false && Data.partyData.ActiveEnemy.charging == false)
         {
-            //SelectedEnemyAction = Random.Range(0, 5);
-            SelectedEnemyAction = 1;
+            SelectedEnemyAction = Random.Range(0, 5);
+           
 
             if (SelectedEnemyAction == 0)
             {
@@ -364,7 +365,14 @@ public class BattleManager : MonoBehaviour
             }
         }
         //STATUS EFFECT CHECKS
-        if (Data.partyData.ActiveChar.StatusEffect ==3 || Data.partyData.ActiveChar.StatusEffect ==4 && PlayerSwitched != true && PlayerUsedAction == false)
+        if (PlayerUsedAction && EnemyUsedAction == true)
+        {
+            Debug.Log("bothActionsUsed");
+            CallEndTurn();
+
+        }
+        //PLAYERSTATUSEFFECT CHECK
+        else if ((Data.partyData.ActiveChar.StatusEffect ==3 || Data.partyData.ActiveChar.StatusEffect ==4) && PlayerSwitched != true && PlayerUsedAction == false)
         {
             switch (Data.partyData.ActiveChar.StatusEffect)
             {
@@ -426,8 +434,9 @@ public class BattleManager : MonoBehaviour
                     break;
             }
         }      
-        else if (Data.partyData.ActiveEnemy.StatusEffect == 3 || Data.partyData.ActiveEnemy.StatusEffect == 4 && EnemySwitched != true && EnemyUsedAction == false)
+        else if ((Data.partyData.ActiveEnemy.StatusEffect == 3 || Data.partyData.ActiveEnemy.StatusEffect == 4) && EnemySwitched != true && EnemyUsedAction == false)
         {
+            Debug.Log("CHECKENEMYSTATUS");
             //CHECK ENEMY STATUS EFFECTS
             switch (Data.partyData.ActiveEnemy.StatusEffect)
             {
@@ -438,10 +447,10 @@ public class BattleManager : MonoBehaviour
                     {
                         if (Random.Range(1, 2) == 2)
                         {
-
+                            EnemyUsedAction = true;
                             ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveEnemy.Name + " is asleep, and has yet to awaken!";
                             EnemyStatusTurnCount = EnemyStatusTurnCount + 1;
-                            EnemyUsedAction = true;
+
 
                         }
                         else
@@ -466,10 +475,10 @@ public class BattleManager : MonoBehaviour
                     {
                         if (Random.Range(1, 2) == 2)
                         {
-
+                            EnemyUsedAction = true;
                             ResaultsText.GetComponent<Text>().text = Data.partyData.ActiveEnemy.Name + " is Frozen and cannot move!";
                             EnemyStatusTurnCount = EnemyStatusTurnCount + 1;
-                            EnemyUsedAction = true;
+
 
                         }
                         else
@@ -488,12 +497,6 @@ public class BattleManager : MonoBehaviour
                     }
                     break;
             }
-        }
-        else if (PlayerUsedAction && EnemyUsedAction == true)
-        {
-            Debug.Log("bothActionsUsed");
-            CallEndTurn();
-
         }
        else if (PlayerUsedAction == true)
         {
@@ -527,6 +530,7 @@ public class BattleManager : MonoBehaviour
             }
             else if (PlayerSelectedAction != 1 && PlayerSelectedAction != 0)
             {
+                Debug.Log("THIS IS A TEST");
                 PlayerUsedAction = true;
                 CallPlayerSkillAttack();
             }
@@ -662,6 +666,8 @@ public class BattleManager : MonoBehaviour
             //CHECK IF ENMEY IS FASTER
             else if (Data.partyData.ActiveChar.SPD < Data.partyData.ActiveEnemy.SPD)
             {
+                Debug.Log("enemyFatser");
+
                 //IF ENEMY CALLED A SWITCH
                 if (EnemySwitched == true)
                 {
@@ -764,7 +770,7 @@ public class BattleManager : MonoBehaviour
                         }
                         else if (PlayerSelectedAction != 1 && PlayerSelectedAction != 0 && AttackDatabase.attacks.AttackPriority[Data.partyData.ActiveChar.EquipedAttacks[PlayerSelectedAction - 2]] == false)
                         {
-                            PlayerUsedAction = true;
+                            EnemyUsedAction = true;
                             if (SelectedEnemyAction == 1)
                             {
                                 CallEnemyWeaponAttack();
@@ -863,6 +869,7 @@ public class BattleManager : MonoBehaviour
     //CALLS THE PLAYERS SKILL ATTACKS
     public void CallPlayerSkillAttack()
     {
+        Debug.Log(AttackDatabase.attacks.AttackName[Data.partyData.ActiveChar.EquipedAttacks[PlayerSelectedAction - 2]]);
         AttackDatabase.attacks.Attack(AttackingPlayer: Data.partyData.ActiveChar, DefendingPlayer: Data.partyData.ActiveEnemy, SelectedAttack: Data.partyData.ActiveChar.EquipedAttacks[PlayerSelectedAction - 2], resaultstext: ResaultsText, Manager: this);
         ResaultsPanel.SetActive(true);
 
@@ -980,6 +987,7 @@ public class BattleManager : MonoBehaviour
         {
             //call loose condition
             Debug.Log("Defeat");
+            SceneManager.LoadScene(3);
         }
         else
         {
@@ -1095,7 +1103,7 @@ public class BattleManager : MonoBehaviour
         if (Data.partyData.EnemyParty01.dead == true && Data.partyData.EnemyParty02.dead == true && Data.partyData.EnemyParty03.dead == true && Data.partyData.EnemyParty04.dead == true)
         {
             //call win condition
-            Debug.Log("victory");
+            SceneManager.LoadScene(2);
         }
         else
         {

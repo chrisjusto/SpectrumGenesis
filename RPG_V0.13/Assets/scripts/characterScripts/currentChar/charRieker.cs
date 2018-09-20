@@ -47,6 +47,13 @@ public class charRieker : charClass {
         Attack03 = 31;
         Attack04 = 32;
 
+        ACCMOD = 1;
+        ATKMOD = 1;
+        DEFMOD = 1;
+        SDEFMOD = 1;
+        SATKMOD = 1;
+        SPDMOD = 1;
+
         EquipedAttacks[0] = 29;
         EquipedAttacks[1] = 30;
         EquipedAttacks[2] = 31;

@@ -29,6 +29,13 @@ public class charDiana : charClass {
         sDEF = 450;
         SPD = 300;
 
+        ACCMOD = 1;
+        ATKMOD = 1;
+        DEFMOD = 1;
+        SDEFMOD = 1;
+        SATKMOD = 1;
+        SPDMOD = 1;
+
         maxHealth = HP * 2;
         currentHealth = HP * 2;
 
