@@ -23,12 +23,26 @@ public class charAbel : charClass
         typeStrength[0] = 4;
         typeStrength[1] = 7;
 
+        baseATK = 600;
+        baseDEF = 350;
+        baseSATK = 200;
+        baseSDEF = 200;
+        baseSPD = 750;
+
         HP = 300;
         ATK = 600;
         DEF = 350;
         sATK = 200;
         sDEF = 200;
         SPD = 750;
+
+        ACCMOD = 1;
+        ATKMOD = 1;
+        DEFMOD = 1;
+        SDEFMOD = 1;
+        SATKMOD = 1;
+        SPDMOD = 1;
+
 
         maxHealth = HP * 2;
         currentHealth = HP * 2;

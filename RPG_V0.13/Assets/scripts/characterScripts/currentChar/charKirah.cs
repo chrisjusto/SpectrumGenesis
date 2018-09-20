@@ -43,6 +43,11 @@ public class charKirah : charClass {
         Attack03 = 19;
         Attack04 = 20;
 
+        EquipedAttacks[0] = 17;
+        EquipedAttacks[1] = 18;
+        EquipedAttacks[2] = 19;
+        EquipedAttacks[3] = 20;
+
         attackUses[0] = AttackDatabase.attacks.AttackUses[EquipedAttacks[0]];
         attackUses[1] = AttackDatabase.attacks.AttackUses[EquipedAttacks[1]];
         attackUses[2] = AttackDatabase.attacks.AttackUses[EquipedAttacks[2]];

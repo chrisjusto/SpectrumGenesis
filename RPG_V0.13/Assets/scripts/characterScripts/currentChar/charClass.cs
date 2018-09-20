@@ -25,8 +25,6 @@ public class charClass : MonoBehaviour {
     public int Attack03;
     public int Attack04;
     public int[] EquipedAttacks = new int[4];
-
-
     public int[] attackUses = new int[4];
 
 
@@ -57,16 +55,24 @@ public class charClass : MonoBehaviour {
 
     //mofifiers
 
-    public int ACCMOD;
-    public int ATKMOD;
-    public int DEFMOD;
-    public int SDEFMOD;
-    public int SATKMOD;
-    public int SPDMOD;
+    public float ACCMOD = 1;
+    public float ATKMOD = 1;
+    public float DEFMOD = 1;
+    public float SDEFMOD = 1;
+    public float SATKMOD = 1;
+    public float SPDMOD = 1;
+
+    public float baseATK;
+    public float baseDEF;
+    public float baseSDEF;
+    public float baseSATK;
+    public float baseSPD;
 
     //status effects 0=none 1=burn 2=poison 3=sleep 4=freeze 5=paralyze
     public int StatusEffect;
     public bool charging;
+    public bool blocked;
+    public bool hasBlockedThisRound;
 
 
     /// <summary>

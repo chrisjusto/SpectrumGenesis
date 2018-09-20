@@ -23,11 +23,14 @@ public class BattleManager : MonoBehaviour
     public GameObject ResaultsPanel;
     public GameObject ResaultsText;
 
-    private bool BackToMenuSelectionPanel;
-    private bool PlayerSwitched;
-    private bool EnemySwitched;
-    private bool PlayerUsedAction;
-    private bool EnemyUsedAction;
+    public GameObject SwitchMenu;
+    public GameObject SwitchMenuBackButton;
+
+    public bool BackToMenuSelectionPanel;
+    public bool PlayerSwitched;
+    public bool EnemySwitched;
+    public bool PlayerUsedAction;
+    public bool EnemyUsedAction;
     //private bool SelectedPlayerAttack;
     //private bool SelectedEnemyAttack;
 
@@ -40,11 +43,11 @@ public class BattleManager : MonoBehaviour
     private int EnemyStatusTurnCount;
 
     //0=switch 1=standerdAttack 2-5=selected attack
-    private int SelectedEnemyAction;
+    public int SelectedEnemyAction;
     public int PlayerSelectedAction;
 
-    private bool PlayerStatusEffectDisplayed;
-    private bool EnemyStatusEffectDisplayed;
+    public bool PlayerStatusEffectDisplayed;
+    public bool EnemyStatusEffectDisplayed;
 
 
 
@@ -84,12 +87,29 @@ public class BattleManager : MonoBehaviour
     public void SwitchCharacters(int SelectedCharacter)
     {
 
-        PlayerSelectedAction = 0;
+        Debug.Log("characterSlected");
+
         
         switch (SelectedCharacter)
         {
             case 1:
-                if (Data.partyData.ActiveChar == Data.partyData.partyMember01)
+                if (Data.partyData.ActiveChar.dead == true && Data.partyData.ActiveChar != Data.partyData.partyMember01)
+                {
+                    var oldCharacterName = Data.partyData.ActiveChar.Name;
+                    characterUi.SetActive(false);
+                    playerSprite.SetActive(false);
+
+                    Data.partyData.ActiveChar = Data.partyData.partyMember01;
+                    characterUi.SetActive(true);
+                    playerSprite.SetActive(true);
+
+                    ResaultsPanel.SetActive(true);
+                    ResaultsText.GetComponent<Text>().text = oldCharacterName + " has been defeated! " + Data.partyData.ActiveChar.Name + " has joined the battle!";
+
+
+
+                }
+                else if (Data.partyData.ActiveChar == Data.partyData.partyMember01)
                 {
                     BackToMenuSelectionPanel = true;
                     ResaultsPanel.SetActive(true);
@@ -97,15 +117,44 @@ public class BattleManager : MonoBehaviour
                 }
                 else if (Data.partyData.ActiveChar != Data.partyData.partyMember01)
                 {
+                    if (Data.partyData.partyMember01.dead == true)
+                    {
+                        BackToMenuSelectionPanel = true;
+                        ResaultsPanel.SetActive(true);
+                        ResaultsText.GetComponent<Text>().text = Data.partyData.partyMember01.Name + " is passed out and cannot rejoin the battle!";
 
-                    PlayerSwitched = true;
-                    PlayerToSwitch = 1;
-                    TurnManager();
+                    }
+                    else
+                    {
+                        PlayerSelectedAction = 0;
+                        PlayerSwitched = true;
+                        PlayerToSwitch = 1;
+                        TurnManager();
+
+
+                    }
+
                     
                 }
                 break;
             case 2:
-                if (Data.partyData.ActiveChar == Data.partyData.partyMember02)
+                if (Data.partyData.ActiveChar.dead == true && Data.partyData.ActiveChar != Data.partyData.partyMember02)
+                {
+                    var oldCharacterName = Data.partyData.ActiveChar.Name;
+                    characterUi.SetActive(false);
+                    playerSprite.SetActive(false);
+
+                    Data.partyData.ActiveChar = Data.partyData.partyMember02;
+                    characterUi.SetActive(true);
+                    playerSprite.SetActive(true);
+
+                    ResaultsPanel.SetActive(true);
+                    ResaultsText.GetComponent<Text>().text = oldCharacterName + " has been defeated! " + Data.partyData.ActiveChar.Name + " has joined the battle!";
+
+
+
+                }
+                else if (Data.partyData.ActiveChar == Data.partyData.partyMember02)
                 {
                     BackToMenuSelectionPanel = true;
                     ResaultsPanel.SetActive(true);
@@ -114,14 +163,43 @@ public class BattleManager : MonoBehaviour
                 else if (Data.partyData.ActiveChar != Data.partyData.partyMember02)
                 {
 
-                    PlayerSwitched = true;
-                    PlayerToSwitch = 2;
-                    TurnManager();
+                    if (Data.partyData.partyMember02.dead == true)
+                    {
+                        BackToMenuSelectionPanel = true;
+                        ResaultsPanel.SetActive(true);
+                        ResaultsText.GetComponent<Text>().text = Data.partyData.partyMember02.Name + " is passed out and cannot rejoin the battle!";
+
+                    }
+                    else
+                    {
+                        PlayerSelectedAction = 0;
+                        PlayerSwitched = true;
+                        PlayerToSwitch = 2;
+                        TurnManager();
+
+
+                    }
 
                 }
                 break;
             case 3:
-                if (Data.partyData.ActiveChar == Data.partyData.partyMember03)
+                if (Data.partyData.ActiveChar.dead == true && Data.partyData.ActiveChar != Data.partyData.partyMember03)
+                {
+                    var oldCharacterName = Data.partyData.ActiveChar.Name;
+                    characterUi.SetActive(false);
+                    playerSprite.SetActive(false);
+
+                    Data.partyData.ActiveChar = Data.partyData.partyMember03;
+                    characterUi.SetActive(true);
+                    playerSprite.SetActive(true);
+
+                    ResaultsPanel.SetActive(true);
+                    ResaultsText.GetComponent<Text>().text = oldCharacterName + " has been defeated! " + Data.partyData.ActiveChar.Name + " has joined the battle!";
+
+
+
+                }
+                else if (Data.partyData.ActiveChar == Data.partyData.partyMember03)
                 {
                     BackToMenuSelectionPanel = true;
                     ResaultsPanel.SetActive(true);
@@ -130,14 +208,41 @@ public class BattleManager : MonoBehaviour
                 else if (Data.partyData.ActiveChar != Data.partyData.partyMember03)
                 {
 
-                    PlayerSwitched = true;
-                    PlayerToSwitch = 3;
-                    TurnManager();
+                    if (Data.partyData.partyMember03.dead == true)
+                    {
+                        BackToMenuSelectionPanel = true;
+                        ResaultsPanel.SetActive(true);
+                        ResaultsText.GetComponent<Text>().text = Data.partyData.partyMember03.Name + " is passed out and cannot rejoin the battle!";
+
+                    }
+                    else
+                    {
+                        PlayerSelectedAction = 0;
+                        PlayerSwitched = true;
+                        PlayerToSwitch = 3;
+                        TurnManager();
+                    }
 
                 }
                 break;
             case 4:
-                if (Data.partyData.ActiveChar == Data.partyData.partyMember04)
+                if (Data.partyData.ActiveChar.dead == true && Data.partyData.ActiveChar != Data.partyData.partyMember04)
+                {
+                    var oldCharacterName = Data.partyData.ActiveChar.Name;
+                    characterUi.SetActive(false);
+                    playerSprite.SetActive(false);
+
+                    Data.partyData.ActiveChar = Data.partyData.partyMember04;
+                    characterUi.SetActive(true);
+                    playerSprite.SetActive(true);
+
+                    ResaultsPanel.SetActive(true);
+                    ResaultsText.GetComponent<Text>().text = oldCharacterName + " has been defeated! " + Data.partyData.ActiveChar.Name + " has joined the battle!";
+
+
+
+                }
+                else if (Data.partyData.ActiveChar == Data.partyData.partyMember04)
                 {
                     BackToMenuSelectionPanel = true;
                     ResaultsPanel.SetActive(true);
@@ -146,9 +251,20 @@ public class BattleManager : MonoBehaviour
                 else if (Data.partyData.ActiveChar != Data.partyData.partyMember04)
                 {
 
-                    PlayerSwitched = true;
-                    PlayerToSwitch = 4;
-                    TurnManager();
+                    if (Data.partyData.partyMember04.dead == true)
+                    {
+                        BackToMenuSelectionPanel = true;
+                        ResaultsPanel.SetActive(true);
+                        ResaultsText.GetComponent<Text>().text = Data.partyData.partyMember04.Name + " is passed out and cannot rejoin the battle!";
+
+                    }
+                    else
+                    {
+                        PlayerSelectedAction = 0;
+                        PlayerSwitched = true;
+                        PlayerToSwitch = 4;
+                        TurnManager();
+                    }
 
                 }
                 break;
@@ -158,22 +274,49 @@ public class BattleManager : MonoBehaviour
 
     public void SelectedWeaponAttack()
     {
+        Debug.Log("weaponAttackSelected");
         PlayerSelectedAction = 1;
         TurnManager();
     }
 
     public void SelectAttack(int attackSelected)
     {
-        PlayerSelectedAction = attackSelected;
-        TurnManager();
+        Debug.Log("skillSelected");
+        if (Data.partyData.ActiveChar.attackUses[attackSelected - 2] > 0)
+        {
+            PlayerSelectedAction = attackSelected;
+            Data.partyData.ActiveChar.attackUses[attackSelected - 2] = Data.partyData.ActiveChar.attackUses[attackSelected - 2] - 1;
+            TurnManager();
+        }
+        else if (Data.partyData.ActiveChar.attackUses[attackSelected - 2]<= 0)
+        {
+            BackToMenuSelectionPanel = true;
+            ResaultsPanel.SetActive(true);
+            ResaultsText.GetComponent<Text>().text = "this ability is out of power to use!";
+        }
     }
 
     //RESAULTS BUTTON FUNCTION
 
     public void ResaultsButton()
     {
+        Debug.Log("PRESS THE FUCKING BUTTON");
+        if(Data.partyData.ActiveChar.currentHealth <= 0)
+        {
+            //call playerDeath and call a player to switch to
+            Data.partyData.ActiveChar.dead = true;
+            PlayerDied();
+    
 
-        if (BackToMenuSelectionPanel == true)
+        }
+        else if (Data.partyData.ActiveEnemy.currentHealth <= 0)
+        {
+            //call enemy death and call enemy to switch to
+            Data.partyData.ActiveEnemy.dead = true;
+            EnemyDied();
+
+        }
+        else if (BackToMenuSelectionPanel == true)
         {
             ResaultsPanel.SetActive(false);
             BackToMenuSelectionPanel = false;
@@ -195,6 +338,7 @@ public class BattleManager : MonoBehaviour
         else if (BackToMenuSelectionPanel == false)
         {
             TurnManager();
+            Debug.Log("callingallturnmanagers");
 
         }
 
@@ -347,6 +491,7 @@ public class BattleManager : MonoBehaviour
         }
         else if (PlayerUsedAction && EnemyUsedAction == true)
         {
+            Debug.Log("bothActionsUsed");
             CallEndTurn();
 
         }
@@ -390,14 +535,15 @@ public class BattleManager : MonoBehaviour
        else if (PlayerUsedAction == false && EnemyUsedAction == false)
         {
             //BEGIN TURN SEQUENCE
-            
+            Debug.Log("startTurn");
             //RUN SPEED CHECK
-            if (Data.partyData.ActiveChar.SPD > Data.partyData.ActiveEnemy.SPD)
+            if (Data.partyData.ActiveChar.SPD >= Data.partyData.ActiveEnemy.SPD)
             {
-                
+                Debug.Log("playerSPeedCheck");
                 //IF PLAYER CALLED A SWITCH
                 if (PlayerSwitched == true)
                 {
+
                     //IF ENEMY CALLED A SWITCH PLAYER TAKES TURN FIRST
                     if (SelectedEnemyAction == 0)
                     {
@@ -421,12 +567,12 @@ public class BattleManager : MonoBehaviour
                     else if (SelectedEnemyAction != 0 || SelectedEnemyAction != 1)
                     {
                         //CHECK IF ATTACKS HAVE PRIORITY OVER SWITCH
-                        if (AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveEnemy.EquipedAttacks[(SelectedEnemyAction - 1)]] == true)
+                        if (AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveEnemy.EquipedAttacks[(SelectedEnemyAction - 2)]] == true)
                         {
                             EnemyUsedAction = true;
                             CallEnemySkillAttack();
                         }
-                        else if (AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveEnemy.EquipedAttacks[(SelectedEnemyAction - 1)]] == false)
+                        else if (AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveEnemy.EquipedAttacks[(SelectedEnemyAction - 2)]] == false)
                         {
                             PlayerUsedAction = true;
                             CallPlayerSwitch();
@@ -455,12 +601,12 @@ public class BattleManager : MonoBehaviour
                         else if (PlayerSelectedAction != 1 && PlayerSelectedAction != 0)
                         {
                             //CHECK IF PLAYER SKILL HAS PRIORITY OVER ENEMYSWITCH
-                            if(AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveChar.EquipedAttacks[PlayerSelectedAction - 1]] == true)
+                            if(AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveChar.EquipedAttacks[PlayerSelectedAction - 2]] == true)
                             {
                                 PlayerUsedAction = true;
                                 CallPlayerSkillAttack();
                             }
-                            else if (AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveChar.EquipedAttacks[PlayerSelectedAction - 1]] == false)
+                            else if (AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveChar.EquipedAttacks[PlayerSelectedAction - 2]] == false)
                             {
                                 EnemyUsedAction = true;
                                 CallEnemySwitch();
@@ -489,12 +635,12 @@ public class BattleManager : MonoBehaviour
                             }
                         }
                         //CHECK IF ENEMY SKILL HAS PRIORITY
-                        if (SelectedEnemyAction != 1 && SelectedEnemyAction != 0 && AttackDatabase.attacks.AttackPriority[Data.partyData.ActiveEnemy.EquipedAttacks[SelectedEnemyAction - 1]] ==true)
+                        if (SelectedEnemyAction != 1 && SelectedEnemyAction != 0 && AttackDatabase.attacks.AttackPriority[Data.partyData.ActiveEnemy.EquipedAttacks[SelectedEnemyAction - 2]] ==true)
                         {
                             EnemyUsedAction = true;
                             CallEnemySkillAttack();
                         }
-                        else if (SelectedEnemyAction != 1 && SelectedEnemyAction != 0 && AttackDatabase.attacks.AttackPriority[Data.partyData.ActiveEnemy.EquipedAttacks[SelectedEnemyAction - 1]] == false)
+                        else if (SelectedEnemyAction != 1 && SelectedEnemyAction != 0 && AttackDatabase.attacks.AttackPriority[Data.partyData.ActiveEnemy.EquipedAttacks[SelectedEnemyAction - 2]] == false)
                         {
                             PlayerUsedAction = true;
                             if (PlayerSelectedAction == 1)
@@ -543,12 +689,12 @@ public class BattleManager : MonoBehaviour
                     else if (PlayerSelectedAction != 0 || PlayerSelectedAction != 1)
                     {
                         //CHECK IF SKILLS HAVE PRIORITY OVER SWITCH
-                        if (AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveChar.EquipedAttacks[(PlayerSelectedAction - 1)]] == true)
+                        if (AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveChar.EquipedAttacks[(PlayerSelectedAction - 2)]] == true)
                         {
                             PlayerUsedAction = true;
                             CallPlayerSkillAttack();
                         }
-                        else if (AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveChar.EquipedAttacks[(PlayerSelectedAction - 1)]] == false)
+                        else if (AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveChar.EquipedAttacks[(PlayerSelectedAction - 2)]] == false)
                         {
                             EnemyUsedAction = true;
                             CallEnemySwitch();
@@ -577,12 +723,12 @@ public class BattleManager : MonoBehaviour
                         else if (SelectedEnemyAction != 1 && SelectedEnemyAction != 0)
                         {
                             //CHECK IF ENEMY SKILL HAS PRIORITY OVER PLAYER SWITCH
-                            if (AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveChar.EquipedAttacks[SelectedEnemyAction - 1]] == true)
+                            if (AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveChar.EquipedAttacks[SelectedEnemyAction - 2]] == true)
                             {
                                 EnemyUsedAction = true;
                                 CallEnemySkillAttack();
                             }
-                            else if (AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveChar.EquipedAttacks[SelectedEnemyAction - 1]] == false)
+                            else if (AttackDatabase.attacks.AttackSuperPriority[Data.partyData.ActiveChar.EquipedAttacks[SelectedEnemyAction - 2]] == false)
                             {
                                 PlayerUsedAction = true;
                                 CallPlayerSwitch();
@@ -611,12 +757,12 @@ public class BattleManager : MonoBehaviour
                             }
                         }
                         //CHECK IF PLAYER SKILL HAS PRIORITY
-                        if (PlayerSelectedAction != 1 && PlayerSelectedAction != 0 && AttackDatabase.attacks.AttackPriority[Data.partyData.ActiveChar.EquipedAttacks[PlayerSelectedAction - 1]] == true)
+                        if (PlayerSelectedAction != 1 && PlayerSelectedAction != 0 && AttackDatabase.attacks.AttackPriority[Data.partyData.ActiveChar.EquipedAttacks[PlayerSelectedAction - 2]] == true)
                         {
                             PlayerUsedAction = true;
                             CallPlayerSkillAttack();
                         }
-                        else if (PlayerSelectedAction != 1 && PlayerSelectedAction != 0 && AttackDatabase.attacks.AttackPriority[Data.partyData.ActiveChar.EquipedAttacks[PlayerSelectedAction - 1]] == false)
+                        else if (PlayerSelectedAction != 1 && PlayerSelectedAction != 0 && AttackDatabase.attacks.AttackPriority[Data.partyData.ActiveChar.EquipedAttacks[PlayerSelectedAction - 2]] == false)
                         {
                             PlayerUsedAction = true;
                             if (SelectedEnemyAction == 1)
@@ -695,7 +841,6 @@ public class BattleManager : MonoBehaviour
                 Data.partyData.ActiveEnemy = Data.partyData.EnemyParty04;
                 break;
         }
-        BackToMenuSelectionPanel = false;
         ResaultsPanel.SetActive(true);
         ResaultsText.GetComponent<Text>().text = oldCharacterName + " has tired out! " + Data.partyData.ActiveEnemy.Name + " has tagged in!";
         enemyUi.SetActive(true);
@@ -704,24 +849,29 @@ public class BattleManager : MonoBehaviour
     //CALLS THE PLAYERS WEAPON ATTACK
     public void CallPlayerWeaponAttack()
     {
+        Debug.Log("callPlayerAttack");
         WeaponDataBase.weapons.AttackFunction(AttackingPlayer: Data.partyData.ActiveChar, DefendingPlayer: Data.partyData.ActiveEnemy, SelectedAttack: Data.partyData.ActiveChar.Weapon, resaultstext: ResaultsText);
         ResaultsPanel.SetActive(true);
     }
     //CALLS THE ENEMIES WEAPON ATTACK
     public void CallEnemyWeaponAttack()
     {
+        Debug.Log("callEnemyAttack");
         WeaponDataBase.weapons.AttackFunction(AttackingPlayer: Data.partyData.ActiveEnemy, DefendingPlayer: Data.partyData.ActiveChar, SelectedAttack: Data.partyData.ActiveEnemy.Weapon, resaultstext: ResaultsText);
         ResaultsPanel.SetActive(true);
     }
     //CALLS THE PLAYERS SKILL ATTACKS
     public void CallPlayerSkillAttack()
     {
+        AttackDatabase.attacks.Attack(AttackingPlayer: Data.partyData.ActiveChar, DefendingPlayer: Data.partyData.ActiveEnemy, SelectedAttack: Data.partyData.ActiveChar.EquipedAttacks[PlayerSelectedAction - 2], resaultstext: ResaultsText, Manager: this);
+        ResaultsPanel.SetActive(true);
 
     }
     //CALLS THE ENEMYS SKILL ATTACKS
     public void CallEnemySkillAttack()
     {
-
+        AttackDatabase.attacks.Attack(AttackingPlayer: Data.partyData.ActiveEnemy, DefendingPlayer: Data.partyData.ActiveChar, SelectedAttack: Data.partyData.ActiveEnemy.EquipedAttacks[PlayerSelectedAction - 2], resaultstext: ResaultsText, Manager: this);
+        ResaultsPanel.SetActive(true);
     }
     //CALL PLAYERSTATUSEFFECTS
     public void CallPlayerStatusEffect()
@@ -808,6 +958,7 @@ public class BattleManager : MonoBehaviour
         }
         else if (Data.partyData.ActiveChar.charging == false)
         {
+            Debug.Log("finalEndTurn");
             PlayerUsedAction = false;
             EnemyUsedAction = false;
             PlayerStatusEffectDisplayed = false;
@@ -815,11 +966,247 @@ public class BattleManager : MonoBehaviour
             PlayerSwitched = false;
             EnemySwitched = false;
             BackToMenuSelectionPanel = true;
+            Data.partyData.ActiveChar.blocked = false;
             ResaultsPanel.SetActive(false);
             BackToMenuSelectionPanel = false;
 
         }
 
+    }
+    //PLAYER DEATH
+    public void PlayerDied()
+    {
+        if (Data.partyData.partyMember01.dead == true && Data.partyData.partyMember02.dead == true && Data.partyData.partyMember03.dead == true && Data.partyData.partyMember04.dead == true)
+        {
+            //call loose condition
+            Debug.Log("Defeat");
+        }
+        else
+        {
+            SwitchMenu.SetActive(true);
+            SwitchMenuBackButton.SetActive(false);
+        }
+    }
+    //CALL DIFFERENT DEAD ENEMIES WITHOUT STACK OVERFLOW
+    public void CallEnemy01()
+    {
+        if (Data.partyData.ActiveEnemy == Data.partyData.EnemyParty01) //IF THE SELECTED SWITCH IS THE DEAD CHARACTER THEN ROLL AGAIN
+        {
+            CallEnemy02();
+        }
+        else if (Data.partyData.EnemyParty01.dead == true) //IF THE SELECTED SWITCH IS A DEAD CHARACTER ROLL AGAIN
+        {
+            CallEnemy02();
+        }
+        else
+        {
+            var oldCharacterName = Data.partyData.ActiveEnemy.Name;
+            enemyUi.SetActive(false);
+            enemySprite.SetActive(false);
+
+            Data.partyData.ActiveEnemy = Data.partyData.EnemyParty01;
+
+            ResaultsPanel.SetActive(true);
+            ResaultsText.GetComponent<Text>().text = oldCharacterName + " has passed out! " + Data.partyData.ActiveEnemy.Name + " has tagged in!";
+            enemyUi.SetActive(true);
+            enemySprite.SetActive(true);
+
+        }
+    }
+    public void CallEnemy02()
+    {
+        if (Data.partyData.ActiveEnemy == Data.partyData.EnemyParty02) //IF THE SELECTED SWITCH IS THE DEAD CHARACTER THEN ROLL AGAIN
+        {
+            CallEnemy03();
+        }
+        else if (Data.partyData.EnemyParty02.dead == true) //IF THE SELECTED SWITCH IS A DEAD CHARACTER ROLL AGAIN
+        {
+            CallEnemy03();
+        }
+        else
+        {
+            var oldCharacterName = Data.partyData.ActiveEnemy.Name;
+            enemyUi.SetActive(false);
+            enemySprite.SetActive(false);
+
+            Data.partyData.ActiveEnemy = Data.partyData.EnemyParty02;
+
+            ResaultsPanel.SetActive(true);
+            ResaultsText.GetComponent<Text>().text = oldCharacterName + " has passed out! " + Data.partyData.ActiveEnemy.Name + " has tagged in!";
+            enemyUi.SetActive(true);
+            enemySprite.SetActive(true);
+
+        }
+    }
+    public void CallEnemy03()
+    {
+        if (Data.partyData.ActiveEnemy == Data.partyData.EnemyParty03) //IF THE SELECTED SWITCH IS THE DEAD CHARACTER THEN ROLL AGAIN
+        {
+            CallEnemy04();
+        }
+        else if (Data.partyData.EnemyParty03.dead == true) //IF THE SELECTED SWITCH IS A DEAD CHARACTER ROLL AGAIN
+        {
+            CallEnemy04();
+        }
+        else
+        {
+            var oldCharacterName = Data.partyData.ActiveEnemy.Name;
+            enemyUi.SetActive(false);
+            enemySprite.SetActive(false);
+
+            Data.partyData.ActiveEnemy = Data.partyData.EnemyParty03;
+
+            ResaultsPanel.SetActive(true);
+            ResaultsText.GetComponent<Text>().text = oldCharacterName + " has passed out! " + Data.partyData.ActiveEnemy.Name + " has tagged in!";
+            enemyUi.SetActive(true);
+            enemySprite.SetActive(true);
+
+        }
+    }
+    public void CallEnemy04()
+    {
+        if (Data.partyData.ActiveEnemy == Data.partyData.EnemyParty04) //IF THE SELECTED SWITCH IS THE DEAD CHARACTER THEN ROLL AGAIN
+        {
+            CallEnemy01();
+        }
+        else if (Data.partyData.EnemyParty04.dead == true) //IF THE SELECTED SWITCH IS A DEAD CHARACTER ROLL AGAIN
+        {
+            CallEnemy01();
+        }
+        else
+        {
+            var oldCharacterName = Data.partyData.ActiveEnemy.Name;
+            enemyUi.SetActive(false);
+            enemySprite.SetActive(false);
+
+            Data.partyData.ActiveEnemy = Data.partyData.EnemyParty04;
+
+            ResaultsPanel.SetActive(true);
+            ResaultsText.GetComponent<Text>().text = oldCharacterName + " has passed out! " + Data.partyData.ActiveEnemy.Name + " has tagged in!";
+            enemyUi.SetActive(true);
+            enemySprite.SetActive(true);
+
+        }
+    }
+
+    //ENEMY DEATH
+    public void EnemyDied()
+    {
+        if (Data.partyData.EnemyParty01.dead == true && Data.partyData.EnemyParty02.dead == true && Data.partyData.EnemyParty03.dead == true && Data.partyData.EnemyParty04.dead == true)
+        {
+            //call win condition
+            Debug.Log("victory");
+        }
+        else
+        {
+            var switchEnemy = Random.Range(1, 4);
+
+            switch (switchEnemy)
+            {
+                case 1:
+                    if (Data.partyData.ActiveEnemy == Data.partyData.EnemyParty01) //IF THE SELECTED SWITCH IS THE DEAD CHARACTER THEN ROLL AGAIN
+                    {
+                        CallEnemy02();
+                    }
+                    else if (Data.partyData.EnemyParty01.dead == true) //IF THE SELECTED SWITCH IS A DEAD CHARACTER ROLL AGAIN
+                    {
+                        CallEnemy02();
+                    }
+                    else
+                    {
+                        var oldCharacterName = Data.partyData.ActiveEnemy.Name;
+                        enemyUi.SetActive(false);
+                        enemySprite.SetActive(false);
+
+                        Data.partyData.ActiveEnemy = Data.partyData.EnemyParty01;
+
+                        ResaultsPanel.SetActive(true);
+                        ResaultsText.GetComponent<Text>().text = oldCharacterName + " has passed out! " + Data.partyData.ActiveEnemy.Name + " has tagged in!";
+                        enemyUi.SetActive(true);
+                        enemySprite.SetActive(true);
+
+                    }
+
+                    break;
+                case 2:
+                    if (Data.partyData.ActiveEnemy == Data.partyData.EnemyParty02) //IF THE SELECTED SWITCH IS THE DEAD CHARACTER THEN ROLL AGAIN
+                    {
+                        CallEnemy03();
+                    }
+                    else if (Data.partyData.EnemyParty02.dead == true) //IF THE SELECTED SWITCH IS A DEAD CHARACTER ROLL AGAIN
+                    {
+                        CallEnemy03();
+                    }
+                    else
+                    {
+                        var oldCharacterName = Data.partyData.ActiveEnemy.Name;
+                        enemyUi.SetActive(false);
+                        enemySprite.SetActive(false);
+
+                        Data.partyData.ActiveEnemy = Data.partyData.EnemyParty02;
+
+                        ResaultsPanel.SetActive(true);
+                        ResaultsText.GetComponent<Text>().text = oldCharacterName + " has passed out! " + Data.partyData.ActiveEnemy.Name + " has tagged in!";
+                        enemyUi.SetActive(true);
+                        enemySprite.SetActive(true);
+
+                    }
+
+                    break;
+                case 3:
+                    if (Data.partyData.ActiveEnemy == Data.partyData.EnemyParty03) //IF THE SELECTED SWITCH IS THE DEAD CHARACTER THEN ROLL AGAIN
+                    {
+                        CallEnemy04();
+                    }
+                    else if (Data.partyData.EnemyParty03.dead == true) //IF THE SELECTED SWITCH IS A DEAD CHARACTER ROLL AGAIN
+                    {
+                        CallEnemy04();
+                    }
+                    else
+                    {
+                        var oldCharacterName = Data.partyData.ActiveEnemy.Name;
+                        enemyUi.SetActive(false);
+                        enemySprite.SetActive(false);
+
+                        Data.partyData.ActiveEnemy = Data.partyData.EnemyParty03;
+
+                        ResaultsPanel.SetActive(true);
+                        ResaultsText.GetComponent<Text>().text = oldCharacterName + " has passed out! " + Data.partyData.ActiveEnemy.Name + " has tagged in!";
+                        enemyUi.SetActive(true);
+                        enemySprite.SetActive(true);
+
+                    }
+
+                    break;
+                case 4:
+                    if (Data.partyData.ActiveEnemy == Data.partyData.EnemyParty04) //IF THE SELECTED SWITCH IS THE DEAD CHARACTER THEN ROLL AGAIN
+                    {
+                        CallEnemy01();
+                    }
+                    else if (Data.partyData.EnemyParty04.dead == true) //IF THE SELECTED SWITCH IS A DEAD CHARACTER ROLL AGAIN
+                    {
+                        CallEnemy01();
+                    }
+                    else
+                    {
+                        var oldCharacterName = Data.partyData.ActiveEnemy.Name;
+                        enemyUi.SetActive(false);
+                        enemySprite.SetActive(false);
+
+                        Data.partyData.ActiveEnemy = Data.partyData.EnemyParty04;
+
+                        ResaultsPanel.SetActive(true);
+                        ResaultsText.GetComponent<Text>().text = oldCharacterName + " has passed out! " + Data.partyData.ActiveEnemy.Name + " has tagged in!";
+                        enemyUi.SetActive(true);
+                        enemySprite.SetActive(true);
+
+                    }
+
+                    break;
+
+            }
+
+        }
     }
 
 }

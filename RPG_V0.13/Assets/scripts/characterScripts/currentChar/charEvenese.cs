@@ -43,6 +43,11 @@ public class charEvenese : charClass {
         Attack03 = 27;
         Attack04 = 28;
 
+        EquipedAttacks[0] = 25;
+        EquipedAttacks[1] = 26;
+        EquipedAttacks[2] = 27;
+        EquipedAttacks[3] = 28;
+
         attackUses[0] = AttackDatabase.attacks.AttackUses[EquipedAttacks[0]];
         attackUses[1] = AttackDatabase.attacks.AttackUses[EquipedAttacks[1]];
         attackUses[2] = AttackDatabase.attacks.AttackUses[EquipedAttacks[2]];

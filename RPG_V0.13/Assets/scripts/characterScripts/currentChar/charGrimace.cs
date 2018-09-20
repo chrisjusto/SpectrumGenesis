@@ -44,6 +44,11 @@ public class charGrimace : charClass {
         Attack03 = 23;
         Attack04 = 24;
 
+        EquipedAttacks[0] = 21;
+        EquipedAttacks[1] = 22;
+        EquipedAttacks[2] = 23;
+        EquipedAttacks[3] = 24;
+
         attackUses[0] = AttackDatabase.attacks.AttackUses[EquipedAttacks[0]];
         attackUses[1] = AttackDatabase.attacks.AttackUses[EquipedAttacks[1]];
         attackUses[2] = AttackDatabase.attacks.AttackUses[EquipedAttacks[2]];
