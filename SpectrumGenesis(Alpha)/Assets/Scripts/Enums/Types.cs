@@ -6,10 +6,16 @@ public static class Types {
 
     public enum Char
     {
-        Abel
+        Monster,
+        Abel,
+        Terra,
+        Lia,
+        Jurah,
+        Grimace,
+        Evenese,
+        Rieker,
+        Kirah
     }
-
-
     public enum CharTyping
     {
         None,
@@ -26,17 +32,87 @@ public static class Types {
         Archane,
         Psychic,
         Celestial
-
     }
-    public enum Weapon
+    public enum WeaponClass
     {
         SwordAndShield,
         Bow,
         Knife,
-        Book,
+        Tome,
         Staff,
-        Hammer
     }
-
+    public enum Ability
+    {
+        None,
+        Adaptability,
+        UnbendingWill,
+        SteadyHand,
+        LightningRod,
+        ArcaneBarrier,
+        Cleanse,
+        NimbleToes,
+        Condisend
+    }
+    public enum Spells
+    {
+        None,
+        OriginSlash,
+        Sharpen,
+        PsychicBlade,
+        Scortch,
+        Block,
+        StoneArmor,
+        EarthBash,
+        Taunt,
+        PsychicShot,
+        PoisonArrow,
+        FrozenTrap,
+        ElvishSong,
+        ThunderStorm,
+        Meditate,
+        Gust,
+        GraveBlast,
+        PsychicTorment,
+        PsychicShock,
+        BeamCannon,
+        HoneMind,
+        IceShard,
+        HealingLight,
+        HolyFire,
+        Blessing,
+        TripleStrike,
+        Darkness,
+        ParalyzePowder,
+        CheepShot,
+        SwiftStrike,
+        Scoff,
+        OnlyPunch,
+        HoneBody,
+        FlameSlash
+    }
+    public enum Weapon
+    {
+        None,
+        PrincesSword,
+        RoyalGreatSword,
+        ArchmagesBow,
+        TomeOfWaves,
+        StrikingTome,
+        StaffOfAngels,
+        PoisonTippedKnife,
+        ThrowingKnives
+    }
+    public enum Armor
+    {
+        None,
+        PrincesGarb,
+        GoldenArmor,
+        TrinketOfDefense,
+        BootsOfSwiftness,
+        SteelArmor,
+        HolyTrinket,
+        CloakOfDarkness,
+        LeatherCloak
+    }
 
 }

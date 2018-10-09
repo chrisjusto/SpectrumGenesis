@@ -113,57 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &146980900
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 146980902}
-  - component: {fileID: 146980901}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &146980901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 146980900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f85d41cfe3770046978aa46121947ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: 
-  Exp: 0
-  ExpToNextLVL: 0
-  LVL: 0
-  Type: 0000000000000000
-  Weakness: 0000000000000000000000000000000000000000
-  Strength: 0000000000000000000000000000000000000000
-  LearnableSpells: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
-  LearnedSpells: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
-  EquipedSpells: 00000000000000000000000000000000
-  WeaponClass: 0
---- !u!4 &146980902
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 146980900}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,4 +189,77 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1410820463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1410820465}
+  - component: {fileID: 1410820464}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1410820464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1410820463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a6996f5b3ce2d41a2b0707597b5b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharIndex: 0
+  Name: 
+  Exp: 0
+  ExpToNextLVL: 0
+  LVL: 0
+  WeaponClass: 0
+  Type: 0000000000000000
+  Weakness: 0000000000000000000000000000000000000000
+  Strength: 0000000000000000000000000000000000000000
+  LearnableSpells: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  LearnedSpells: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  EquipedSpells: 00000000000000000000000000000000
+  SpellUses: 00000000000000000000000000000000
+  EquipedArmor: 0
+  EquipedWeapon: 0
+  CharAbility: 0
+  HP: 0
+  ATK: 0
+  DEF: 0
+  sATK: 0
+  sDEF: 0
+  SPD: 0
+  ACCMOD: 0
+  ATKMOD: 0
+  DEFMOD: 0
+  SATKMOD: 0
+  SDEFMOD: 0
+  SPDMOD: 0
+  MaxHP: 0
+  CurrentHP: 0
+  FrontSprite: {fileID: 0}
+  BackSprite: {fileID: 0}
+  Portrait: {fileID: 0}
+--- !u!4 &1410820465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1410820463}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
