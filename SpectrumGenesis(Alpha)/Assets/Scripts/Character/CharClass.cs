@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharClass : MonoBehaviour {
 
+
+    
     public string Name;
     public int Exp;
     public int ExpToNextLVL;
@@ -14,7 +16,15 @@ public class CharClass : MonoBehaviour {
     public int[] LearnableSpells = new int[10];
     public int[] LearnedSpells = new int[10];
     public int[] EquipedSpells = new int[4];
-    public WhatWeapon.Weapon WeaponClass;
+    public Types.Weapon WeaponClass;
+    public int EquipedArmor;
+    public int EquipedWeapon;
+    public Sprite FrontSprite;
+    public Sprite BackSprite;
+    public Sprite Portrait;
+    public int Ability;
+    public Types.Char CharIndex;
+    
 
 
 

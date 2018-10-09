@@ -4,6 +4,11 @@ using UnityEngine;
 
 public static class Types {
 
+    public enum Char
+    {
+        Abel
+    }
+
 
     public enum CharTyping
     {
@@ -22,6 +27,15 @@ public static class Types {
         Psychic,
         Celestial
 
+    }
+    public enum Weapon
+    {
+        SwordAndShield,
+        Bow,
+        Knife,
+        Book,
+        Staff,
+        Hammer
     }
 
 
