@@ -114,5 +114,14 @@ public static class Types {
         CloakOfDarkness,
         LeatherCloak
     }
+    public enum StatusEffect
+    {
+        None,
+        Burn,
+        Poison,
+        Paralyze,
+        Freeze,
+        Sleep
+    }
 
 }

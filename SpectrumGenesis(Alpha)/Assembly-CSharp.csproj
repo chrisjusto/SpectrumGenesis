@@ -64,19 +64,20 @@
     <Compile Include="Assets\Scripts\Character\CharAbel.cs" />
     <Compile Include="Assets\Scripts\Character\CharClass.cs" />
     <Compile Include="Assets\Scripts\Character\CharTerra.cs" />
+    <Compile Include="Assets\Scripts\Database\Data.cs" />
     <Compile Include="Assets\Scripts\Enums\Types.cs" />
     <Compile Include="Assets\Scripts\Enums\WhatWeapon.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/Chris Justo/Documents/GitHub/SpectrumGenesis/SpectrumGenesis(Alpha)/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/chris/Documents/GitHub/SpectrumGenesis/SpectrumGenesis(Alpha)/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/Chris Justo/Documents/GitHub/SpectrumGenesis/SpectrumGenesis(Alpha)/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/chris/Documents/GitHub/SpectrumGenesis/SpectrumGenesis(Alpha)/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/Chris Justo/Documents/GitHub/SpectrumGenesis/SpectrumGenesis(Alpha)/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/chris/Documents/GitHub/SpectrumGenesis/SpectrumGenesis(Alpha)/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/Chris Justo/Documents/GitHub/SpectrumGenesis/SpectrumGenesis(Alpha)/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/chris/Documents/GitHub/SpectrumGenesis/SpectrumGenesis(Alpha)/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity2018.11/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -277,10 +278,10 @@
       <HintPath>C:/Program Files/Unity2018.11/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:/Users/Chris Justo/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+      <HintPath>C:/Users/chris/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>C:/Users/Chris Justo/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/chris/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity2018.11/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

@@ -28,6 +28,8 @@ public class CharClass : MonoBehaviour {
 
     public Types.Ability CharAbility;
 
+    public Types.StatusEffect Status;
+
     public int HP;
     public int ATK;
     public int DEF;
@@ -40,6 +42,18 @@ public class CharClass : MonoBehaviour {
     public float SATKMOD;
     public float SDEFMOD;
     public float SPDMOD;
+    public int ITEMHPMOD;
+    public int ITEMATKMOD;
+    public int ITEMDEFMOD;
+    public int ITEMSATKMOD;
+    public int ITEMSDEFMOD;
+    public int ITEMSPDMOD;
+    public int FINALHP;
+    public int FINALATK;
+    public int FINALDEF;
+    public int FINALSATK;
+    public int FINALSDEF;
+    public int FINALSPD;
 
     public int MaxHP;
     public int CurrentHP;

@@ -190,28 +190,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1410820463
+--- !u!1 &810728036
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1410820465}
-  - component: {fileID: 1410820464}
+  - component: {fileID: 810728039}
+  - component: {fileID: 810728038}
+  - component: {fileID: 810728037}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Data
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1410820464
+--- !u!114 &810728037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1410820463}
+  m_GameObject: {fileID: 810728036}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81a6996f5b3ce2d41a2b0707597b5b41, type: 3}
@@ -233,6 +234,7 @@ MonoBehaviour:
   EquipedArmor: 0
   EquipedWeapon: 0
   CharAbility: 0
+  Status: 0
   HP: 0
   ATK: 0
   DEF: 0
@@ -245,17 +247,52 @@ MonoBehaviour:
   SATKMOD: 0
   SDEFMOD: 0
   SPDMOD: 0
+  ITEMHPMOD: 0
+  ITEMATKMOD: 0
+  ITEMDEFMOD: 0
+  ITEMSATKMOD: 0
+  ITEMSDEFMOD: 0
+  ITEMSPDMOD: 0
+  FINALHP: 0
+  FINALATK: 0
+  FINALDEF: 0
+  FINALSATK: 0
+  FINALSDEF: 0
+  FINALSPD: 0
   MaxHP: 0
   CurrentHP: 0
   FrontSprite: {fileID: 0}
   BackSprite: {fileID: 0}
   Portrait: {fileID: 0}
---- !u!4 &1410820465
+--- !u!114 &810728038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 810728036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84af7a4a2aaa7f848bcfbf20c3194a61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActiveChar: {fileID: 810728037}
+  ActiveInUi: {fileID: 0}
+  PlayerParty:
+  - {fileID: 810728037}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  EnemyParty:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!4 &810728039
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1410820463}
+  m_GameObject: {fileID: 810728036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
