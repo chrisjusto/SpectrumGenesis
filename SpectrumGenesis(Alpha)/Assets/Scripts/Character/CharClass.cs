@@ -62,4 +62,7 @@ public class CharClass : MonoBehaviour {
     public Sprite BackSprite;
     public Sprite Portrait;
 
+
+    public bool ActionUsed;
+
 }

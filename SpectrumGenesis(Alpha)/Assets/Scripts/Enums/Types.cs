@@ -114,6 +114,12 @@ public static class Types {
         CloakOfDarkness,
         LeatherCloak
     }
+    public enum Items
+    {
+        None,
+        Potion,
+        StatBooster
+    }
     public enum StatusEffect
     {
         None,
@@ -122,6 +128,14 @@ public static class Types {
         Paralyze,
         Freeze,
         Sleep
+    }
+    public enum SelectedAction
+    {
+        Attack,
+        Spell,
+        Switch,
+        Item,
+        Flee
     }
 
 }

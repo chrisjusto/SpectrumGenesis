@@ -13,6 +13,7 @@ public class Data : MonoBehaviour {
 
     public CharClass[] PlayerParty = new CharClass[4];
 
+    public CharClass ActiveEnemy;
     public CharClass[] EnemyParty = new CharClass[4];
 
 
